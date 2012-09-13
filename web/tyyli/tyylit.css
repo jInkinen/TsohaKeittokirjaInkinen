@@ -1,0 +1,42 @@
+body {
+	background-color: #FFFF99;
+}
+
+#raami{
+	width: 800px;
+	margin: 50px auto;
+	background: #FFFFE0;
+}
+
+#banneri {
+	width: 800px;
+	height: 150px;
+	margin: 0 auto;
+	background: url(kuvat/banneriP.gif) no-repeat;
+}
+
+#banneri ul {
+	list-style: none;
+	line-height: normal;
+}
+
+#banneri li {
+	float: right;
+}
+ 
+#menu {
+	float: right;
+	width: 150px;
+	margin: 0px;
+	padding: 30px 0px 0px 0px;
+}
+
+#menu ul {
+	padding: 0;
+	list-style: none;
+}
+
+#sisus {
+	padding: 50px;
+	height: 900px;
+}
