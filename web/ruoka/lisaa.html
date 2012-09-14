@@ -1,0 +1,113 @@
+<!-- 
+    Document   : resepti lisää
+    Created on : 14.9.2012, 16:13:41
+    Author     : juhainki
+-->
+
+<!@page contentType="text/html" pageEncoding="UTF-8">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Keittokirja Online - Reseptisivu</title>
+        <link rel="stylesheet" href="../tyyli/tyylit.css" />
+    </head>
+    <body>
+		<div id="banneri">
+			<ul>
+				<li>
+					<form id="haku" action="">
+						<input id="etsi" type="text" placeholder="Mitä etsit?">
+						<input id="hae" type="submit" value="Hae">
+					</form>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<ul id="navi">
+				<li><a href="../index.html">Etusivu</a></li>
+				<li>
+					<a href="selaa.html">Reseptit</a>
+					<ul>
+						<li><a href="lisaa.html">Lisää uusi</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="../ateria/selaa.html">Ateriat</a>
+					<ul>
+						<li><a href="../ateria/lisaa.html">Lisää uusi</a></li>
+					</ul>
+				</li>
+				<li><a href="../aines/selaa.html">Ainekset</a></li>
+				<li>
+					<a href="../user/profiili.html">Käyttäjä</a>
+					<ul>
+						<li><a href="../user/kori.html">Ostoskori</a></li>
+						<li><a href="../user/rek.html">Rekisteröidy</a></li>
+						<li><a href="../user/kir.html">Kirjaudu</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="raami">
+			<div id="sisus">
+				<h1>Lisää uusi resepti</h1>
+					<form id="uusiresepti" action="">
+						<table>
+							<tr>
+								<td>Reseptin nimi:</td>			
+								<td><input id="nimi" type="text" required="true"></td>
+							</tr>
+							<tr>
+								<td>Valmistusaika</td>			
+								<td><input id="nimi" type="number" min="0"> minuuttia</td>
+							</tr>
+							<tr>
+								<td>Tyyppi:</td>
+								<td>
+									<select>
+										<option value="null">(Ei valittu)</option>
+										<option value="alku">Alkuruoka</option>
+										<option value="paa">Pääruoka</option>
+										<option value="jalki">Jälkiruoka</option>
+										<option value="juoma">Juoma</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Laji:</td>
+								<td>
+									<select>
+										<option value="null">(Ei valittu)</option>
+										<option value="liha">Liha</option>
+										<option value="kala">Kala</option>
+										<option value="kasvis">Kasvis</option>
+										<option value="kana">Broileri</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Valmistusohje:</td>			
+								<td><textarea id="ohje" rows=4 cols=50>Lisää ohje</TEXTAREA></td>
+							</tr>
+							<tr>
+								<td>
+									Ainekset:
+								</td>
+								<td>
+									<textarea id="ohje" rows=6 cols=50>Lisää jokainen aines omalle rivilleen ja erota aineksen nimi ja määrä toisistaan välilyönnillä.</TEXTAREA>
+								</td>
+							</tr>
+							
+							<tr><td><br></td></tr>
+							<tr>
+								<td>Kuva:</td>
+								<td><input id="kuva" type="file"></td>
+							</tr>
+						</table><br>
+						<input id="lisaa" type="submit" value="Lisää">
+					</form>
+			</div>
+		</div>
+    </body>
+</html>

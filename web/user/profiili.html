@@ -1,6 +1,6 @@
 <!-- 
-    Document   : selaa aterioita
-    Created on : 13.9.2012, 17:44:36
+    Document   : profiili
+    Created on : 14.9.2012, 19:21:16
     Author     : juhainki
 -->
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Keittokirja Online - Ateriat</title>
+        <title>Keittokirja Online - Profiili</title>
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
@@ -33,37 +33,33 @@
 					</ul>
 				</li>
 				<li>
-					<a href="selaa.html">Ateriat</a>
+					<a href="../ateria/selaa.html">Ateriat</a>
 					<ul>
-						<li><a href="lisaa.html">Lisää uusi</a></li>
+						<li><a href="../ateria/lisaa.html">Lisää uusi</a></li>
 					</ul>
 				</li>
 				<li><a href="../aines/selaa.html">Ainekset</a></li>
 				<li>
-					<a href="../user/profiili.html">Käyttäjä</a>
+					<a href="profiili.html">Käyttäjä</a>
 					<ul>
-						<li><a href="../user/kori.html">Ostoskori</a></li>
-						<li><a href="../user/rek.html">Rekisteröidy</a></li>
-						<li><a href="../user/kir.html">Kirjaudu</a></li>
+						<li><a href="kori.html">Ostoskori</a></li>
+						<li><a href="rek.html">Rekisteröidy</a></li>
+						<li><a href="kir.html">Kirjaudu</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 		<div id="raami">
 			<div id="sisus">
-				<h1>Ateriat</h1>
-				<table>
-					<tr>
-						<th>Nimi</th>
-						<th>Lisätty</th>
-					</tr>
-					<tr>
-						<td><a href="ateria.html">tänne</a></td>
-						<td>dataa</td>
-					</tr>
-				</table>
+				<h1>Profiili - [TIETOKANNASTA NIMI]</h1>
+				<p>Tämä on käyttäjäprofiilisi. Täältä voit poistaa profiilin tai kirjautua ulos.</p>
+				<form>
+					<input id="kirjauduulos" type="button" value="Kirjaudu ulos">
+				</form><br><br>
+				<form>
+					<input id="poistak" type="button" value="Poista käyttäjätunnus">
+				</form>
 			</div>
 		</div>
-
     </body>
 </html>

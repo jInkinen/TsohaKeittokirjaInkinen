@@ -1,12 +1,54 @@
 body {
 	background-color: #FFFF99;
+	font-family: Arial;
 }
+
+#navi{
+	list-style: none;
+	margin: 0 auto;
+	width: 800px;
+	padding: 0;
+}
+
+#navi > li {
+	float: left;
+	width: 160px;
+	height: 50px;
+	background: url(kuvat/nappula.gif) no-repeat;
+	margin: 0 auto;
+}
+
+#navi ul {
+	float: left;
+    list-style: none;
+	position: absolute;
+    display: none;
+	padding: 0;
+}
+
+#navi a {
+	display: block;
+    line-height: 0;
+    text-decoration: none;
+	padding: 25px;
+	font-size: 20px;
+}
+
+#navi li:hover ul {
+    display: block;
+	background: url(kuvat/nappula2.gif);
+	width: 160px;
+}
+
+
 
 #raami{
 	width: 800px;
 	margin: 50px auto;
 	background: #FFFFE0;
 }
+
+
 
 #banneri {
 	width: 800px;
@@ -23,6 +65,9 @@ body {
 #banneri li {
 	float: right;
 }
+ 
+ 
+ 
  
 #menu {
 	float: right;

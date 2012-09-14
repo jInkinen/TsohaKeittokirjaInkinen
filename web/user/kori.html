@@ -1,6 +1,6 @@
 <!-- 
-    Document   : resepti
-    Created on : 13.9.2012, 17:44:36
+    Document   : ostoskori
+    Created on : 14.9.2012, 19:21:16
     Author     : juhainki
 -->
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Keittokirja Online - Reseptisivu</title>
+        <title>Keittokirja Online - Ostoskori</title>
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
@@ -27,9 +27,9 @@
 			<ul id="navi">
 				<li><a href="../index.html">Etusivu</a></li>
 				<li>
-					<a href="selaa.html">Reseptit</a>
+					<a href="../ruoka/selaa.html">Reseptit</a>
 					<ul>
-						<li><a href="lisaa.html">Lisää uusi</a></li>
+						<li><a href="../ruoka/lisaa.html">Lisää uusi</a></li>
 					</ul>
 				</li>
 				<li>
@@ -40,41 +40,38 @@
 				</li>
 				<li><a href="../aines/selaa.html">Ainekset</a></li>
 				<li>
-					<a href="../user/profiili.html">Käyttäjä</a>
+					<a href="profiili.html">Käyttäjä</a>
 					<ul>
-						<li><a href="../user/kori.html">Ostoskori</a></li>
-						<li><a href="../user/rek.html">Rekisteröidy</a></li>
-						<li><a href="../user/kir.html">Kirjaudu</a></li>
+						<li><a href="kori.html">Ostoskori</a></li>
+						<li><a href="rek.html">Rekisteröidy</a></li>
+						<li><a href="kir.html">Kirjaudu</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 		<div id="raami">
 			<div id="sisus">
-				<h1>[RUOAN NIMI]</h1>
-				<p>[TÄHÄN KUVA TIETOKANNASTA?]<img src="kuvat/ruoka1.jpg"></img></p>
-				<p><b>Valmistusaika: [Tietokannasta]</b>
+				<h1>Ostoskori - [TIETOKANNASTA NIMI]</h1>
+				<br>
+				<form id="tyhjennakori" action="">
+					<input id="tyhjenna" type="submit" value="Tyhjennä ostoskori">
+				</form><br>
 				<table>
 					<tr>
 						<th>Aines</th>
 						<th>Määrä</th>
+
 					</tr>
 					<tr>
-						<td><a href="aines.html">tänne</a></td>
-						<td>dataa tietokannasta</td>
+						<td>tänne</td>
+						<td>dataa TIKAsta</td>
+						<td>
+							<form id="poistakorista" action="">
+								<input id="poista" type="submit" value="Poista">
+							</form>
+						</td>
 					</tr>
 				</table>
-				</p>
-				<p><b>Valmistusohje:</b><br>[TÄHÄN PITKÄ SELOSTUS VALMISTUSOHJEISTA < TIETOKANTA]</p>
-				<p>
-				<table><b>Kommentit</b>
-					<tr>
-						<td>[Kommentoijan nimi]</td>
-						<td>[Kommentti]</td>
-					</tr>
-				</table>
-				</p>
-				<p><br><br>Sivuston kuvat ovat sivulta <a href="http://www.foodphotosite.com/">FoodPhotoSite.com</a></p>
 			</div>
 		</div>
     </body>
