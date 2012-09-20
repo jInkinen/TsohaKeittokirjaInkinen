@@ -4,23 +4,24 @@
     Author     : juhainki
 -->
 <?php
-    //Tuodaan tika-yhteyden määritelmät
-    include("../TKyhteys.php");
-    //Otetaan muistiin ID, jonka perusteella tunnistetaan haluttu resepti.
-    $ID = $_GET["id"];
-    //Haetaan tietokannasta kyseinen tietue
-    $kysely = $TKyhteys->prepare("SELECT * FROM ateria WHERE ID=" . $ID);
-    $kysely->execute();
-    //Tallennetaan noudetut tiedot käyttöä varten muuttujiin
-    $tulos = $kysely->fetch();
-    $nimi = $tulos["nimi"];
+//Tuodaan tika-yhteyden määritelmät
+include("../TKyhteys.php");
+//Otetaan muistiin ID, jonka perusteella tunnistetaan haluttu resepti.
+$ID = $_GET["id"];
+//Haetaan tietokannasta kyseinen tietue
+$kysely = $TKyhteys->prepare("SELECT * FROM ateria WHERE ID=" . $ID);
+$kysely->execute();
+//Tallennetaan noudetut tiedot käyttöä varten muuttujiin
+$tulos = $kysely->fetch();
+$nimi = $tulos["nimi"];
+$kuvaus = $tulos["kuvaus"];
 ?>
 <!@page contentType="text/html" pageEncoding="UTF-8" charset=UTF-8>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Keittokirja Online - Reseptisivu</title>
+        <title>Keittokirja Online - Ateriasivu</title>
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
@@ -38,15 +39,15 @@
             <ul id="navi">
                 <li><a href="../index.html">Etusivu</a></li>
                 <li>
-                    <a href="selaa.html">Reseptit</a>
+                    <a href="../selaa.php">Reseptit</a>
                     <ul>
-                        <li><a href="lisaa.html">Lisää uusi</a></li>
+                        <li><a href="../lisaa.php">Lisää uusi</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="../ateria/selaa.html">Ateriat</a>
+                    <a href="selaa.php">Ateriat</a>
                     <ul>
-                        <li><a href="../ateria/lisaa.html">Lisää uusi</a></li>
+                        <li><a href="lisaa.php">Lisää uusi</a></li>
                     </ul>
                 </li>
                 <li><a href="../aines/selaa.html">Ainekset</a></li>
@@ -63,19 +64,18 @@
         <div id="raami">
             <div id="sisus">
                 <h1><?php echo $nimi ?></h1>
-                <p><b>Valmistusaika: <?php echo $aika ?></b>
+                <p>
+                    <?php echo $kuvaus ?>
+                </p>
                 <table>
                     <tr>
-                        <th>Aines</th>
-                        <th>Määrä</th>
+                        <th>Ruoka</th>
                     </tr>
                     <tr>
-                        <td><a href="aines.html">tänne</a></td>
-                        <td>dataa tietokannasta</td>
+                        <td><a href="../ruoka/resepti.php?id=">ruoka [lisää TIKA toiminto]</a></td>
                     </tr>
                 </table>
                 </p>
-                <p><b>Valmistusohje:</b><br><?php echo $ohje ?></p>
                 <p>
                 <table><b>Kommentit</b>
                     <tr>
@@ -84,7 +84,6 @@
                     </tr>
                 </table>
                 </p>
-                <p><br><br>Sivuston kuvat ovat sivulta <a href="http://www.foodphotosite.com/">FoodPhotoSite.com</a></p>
             </div>
         </div>
     </body>

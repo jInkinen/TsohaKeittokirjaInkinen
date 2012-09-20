@@ -2,7 +2,7 @@
 
 CREATE TABLE ruoka
 (
-	ID bigint NOT NULL PRIMARY KEY,
+	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nimi nvarchar(100),
 	aika int,
 	ohje nvarchar(max)
@@ -10,7 +10,7 @@ CREATE TABLE ruoka
 
 CREATE TABLE aines
 (
-	ID bigint NOT NULL PRIMARY KEY,
+	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nimi nvarchar(100),
 	hinta smallmoney,
 	ravinto int
@@ -18,7 +18,7 @@ CREATE TABLE aines
 
 CREATE TABLE ateria
 (
-	ID bigint NOT NULL PRIMARY KEY,
+	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nimi nvarchar(100),
 	kuvaus nvarchar(300)
 )

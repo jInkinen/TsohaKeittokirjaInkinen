@@ -1,24 +1,20 @@
 <?php
 $nimi = $_POST["nimi"];
-$aika = $_POST["aika"];
-$ohje = $_POST["ohje"];
-$aines = $_POST["aines"];
+$kuvaus = $_POST["kuvaus"];
 
 echo "Lisätty seuraavat tiedot.<br>";
 echo "Nimi: $nimi<br>";
-echo "Aika: $aika<br>";
-echo "$ohje<br>";
-echo "$aines<br>";
+echo "Aika: $kuvaus<br>";
 
 // TODO tieto-virheiden käsittely
 try {
     include("../TKyhteys.php");
-    $insert = $TKyhteys->prepare("INSERT INTO ruoka (nimi, aika, ohje) VALUES (?, ?, ?)");
-    $insert->execute(array($nimi, $aika, $ohje));
+    $insert = $TKyhteys->prepare("INSERT INTO ateria (nimi, kuvaus) VALUES (?, ?)");
+    $insert->execute(array($nimi, $kuvaus));
 } catch (PDOException $e) {
     die("Virhe tietokantayhteydessä: " . $e->getMessage());
 }
 
-//TODO ohjaus luodun reseptin sivulle
+//TODO ohjaus luodun aterian sivulle
 ?>
 

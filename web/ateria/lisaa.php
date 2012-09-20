@@ -52,15 +52,15 @@
 		<div id="raami">
 			<div id="sisus">
 				<h1>Lisää uusi ateriakokonaisuus</h1>
-					<form id="uusiresepti" action="">
+					<form id="uusiresepti" action="lisays.php" method="post">
 						<table>
 							<tr>
 								<td>Aterian nimi:</td>			
-								<td><input id="nimi" type="text" required="true"></td>
+								<td><input name="nimi" type="text" required="true"></td>
 							</tr>
 							<tr>
 								<td>Aterian kuvaus:</td>
-								<td><input id="kuvaus" type="text"></td>
+								<td><input name="kuvaus" type="text"></td>
 							</tr>
 							<tr><td><br></td></tr>
 							<tr>
@@ -115,7 +115,7 @@
 							<tr><td><br></td></tr>
 							<tr>
 								<td>Kuva:</td>
-								<td><input id="kuva" type="file"></td>
+								<td><input name="kuva" type="file"></td>
 							</tr>
 						</table><br>
 						<input id="lisaa" type="submit" value="Lisää">
