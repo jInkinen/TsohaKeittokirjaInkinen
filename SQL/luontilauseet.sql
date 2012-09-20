@@ -19,17 +19,24 @@ CREATE TABLE aines
 CREATE TABLE ateria
 (
 	ID bigint NOT NULL PRIMARY KEY,
-	nimi nvarchar(100)
+	nimi nvarchar(100),
+	kuvaus nvarchar(300)
 )
 
 CREATE TABLE ruoanainekset
 (
+	ID bigint NOT NULL PRIMARY KEY,
+	RuokaID bigint,
+	AinesID bigint,
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
-	FOREIGN KEY (AinesID) REFERENCES aines(ID)
+	FOREIGN KEY (AinesID) REFERENCES aines(ID),
 )
 
 CREATE TABLE aterianruoat
 (
+	ID bigint NOT NULL PRIMARY KEY,
+	AteriaID bigint,
+	AinesID bigint,
 	FOREIGN KEY (AteriaID) REFERENCES ateria(ID),
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 )

@@ -1,87 +1,103 @@
 body {
-	background-color: #FFFF99;
-	font-family: Arial;
+    background-color: #FFFF99;
+    font-family: Arial;
 }
 
 #navi{
-	list-style: none;
-	margin: 0 auto;
-	width: 800px;
-	padding: 0;
+    list-style: none;
+    margin: 0 auto;
+    width: 800px;
+    padding: 0;
 }
 
 #navi > li {
-	float: left;
-	width: 160px;
-	height: 50px;
-	background: url(kuvat/nappula.gif) no-repeat;
-	margin: 0 auto;
+    float: left;
+    width: 160px;
+    height: 50px;
+    background: url(kuvat/nappula.gif) no-repeat;
+    margin: 0 auto;
 }
 
 #navi ul {
-	float: left;
+    float: left;
     list-style: none;
-	position: absolute;
+    position: absolute;
     display: none;
-	padding: 0;
+    padding: 0;
 }
 
 #navi a {
-	display: block;
+    display: block;
     line-height: 0;
     text-decoration: none;
-	padding: 25px;
-	font-size: 20px;
+    padding: 25px;
+    font-size: 20px;
 }
 
 #navi li:hover ul {
     display: block;
-	background: url(kuvat/nappula2.gif);
-	width: 160px;
+    background: url(kuvat/nappula2.gif);
+    width: 160px;
 }
 
 
 
 #raami{
-	width: 800px;
-	margin: 50px auto;
-	background: #FFFFE0;
+    width: 800px;
+    margin: 50px auto;
+    background: #FFFFE0;
 }
 
 
 
 #banneri {
-	width: 800px;
-	height: 150px;
-	margin: 0 auto;
-	background: url(kuvat/banneriP.gif) no-repeat;
+    width: 800px;
+    height: 150px;
+    margin: 0 auto;
+    background: url(kuvat/banneriP.gif) no-repeat;
 }
 
 #banneri ul {
-	list-style: none;
-	line-height: normal;
+    list-style: none;
+    line-height: normal;
 }
 
 #banneri li {
-	float: right;
+    float: right;
 }
- 
- 
- 
- 
+
+
+
+
 #menu {
-	float: right;
-	width: 150px;
-	margin: 0px;
-	padding: 30px 0px 0px 0px;
+    float: right;
+    width: 150px;
+    margin: 0px;
+    padding: 30px 0px 0px 0px;
 }
 
 #menu ul {
-	padding: 0;
-	list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 #sisus {
-	padding: 50px;
-	height: 900px;
+    padding: 50px;
+    height: 900px;
+}
+
+table {
+    border:1px solid green;
+    width:80%; 
+}
+th {
+    height:40px;
+    text-align: left;
+    padding: 5px;
+}
+td {
+    height:30px;        
+}
+tr.alt td {
+    background-color:#A7C942;
 }

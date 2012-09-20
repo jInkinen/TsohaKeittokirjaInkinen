@@ -3,3 +3,4 @@ Lisättävä:
 Hakutulokset
 Reseptin/aterian muokkaus
 Kommentointi
+kirjautumisen korjaus
