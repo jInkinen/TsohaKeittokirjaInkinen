@@ -1,6 +1,9 @@
 Lisättävä:
 
-Hakutulokset
+Haku-toiminto
+Hakutulos-sivu
 Reseptin/aterian muokkaus
 Kommentointi
-kirjautumisen korjaus
+Kirjautuminen
+Käyttäjähallinta
+Reseptin luonnin yhteydessä aineiden lisäys

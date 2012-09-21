@@ -1,42 +1,41 @@
-
-
 CREATE TABLE ruoka
 (
-	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	nimi nvarchar(100),
-	aika int,
-	ohje nvarchar(max)
+	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nimi varchar(100),
+	aika int(11),
+	ohje text
 )
 
 CREATE TABLE aines
 (
-	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	nimi nvarchar(100),
-	hinta smallmoney,
-	ravinto int
+	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nimi varchar(100),
+	hinta double,
+	ravinto int(11)
 )
 
 CREATE TABLE ateria
 (
-	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	nimi nvarchar(100),
-	kuvaus nvarchar(300)
+	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nimi varchar(100),
+	kuvaus varchar(300)
 )
 
 CREATE TABLE ruoanainekset
 (
-	ID bigint NOT NULL PRIMARY KEY,
-	RuokaID bigint,
-	AinesID bigint,
+	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	RuokaID bigint(20),
+	AinesID bigint(20),
+	maara int,
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
-	FOREIGN KEY (AinesID) REFERENCES aines(ID),
+	FOREIGN KEY (AinesID) REFERENCES aines(ID)
 )
 
 CREATE TABLE aterianruoat
 (
-	ID bigint NOT NULL PRIMARY KEY,
+	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	AteriaID bigint,
-	AinesID bigint,
+	RuokaID bigint,
 	FOREIGN KEY (AteriaID) REFERENCES ateria(ID),
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 )

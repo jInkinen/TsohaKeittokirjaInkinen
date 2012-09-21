@@ -13,42 +13,7 @@
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
-        <div id="banneri">
-            <ul>
-                <li>
-                    <form id="haku" action="">
-                        <input id="etsi" type="text" placeholder="Mitä etsit?">
-                        <input id="hae" type="submit" value="Hae">
-                    </form>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <ul id="navi">
-                <li><a href="../index.html">Etusivu</a></li>
-                <li>
-                    <a href="../ruoka/selaa.html">Reseptit</a>
-                    <ul>
-                        <li><a href="../ruoka/lisaa.html">Lisää uusi</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="selaa.html">Ateriat</a>
-                    <ul>
-                        <li><a href="lisaa.html">Lisää uusi</a></li>
-                    </ul>
-                </li>
-                <li><a href="../aines/selaa.html">Ainekset</a></li>
-                <li>
-                    <a href="../user/profiili.html">Käyttäjä</a>
-                    <ul>
-                        <li><a href="../user/kori.html">Ostoskori</a></li>
-                        <li><a href="../user/rek.html">Rekisteröidy</a></li>
-                        <li><a href="../user/kir.html">Kirjaudu</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <?php include("../valikko.php"); ?>
         <div id="raami">
             <div id="sisus">
                 <h1>Ateriat</h1>

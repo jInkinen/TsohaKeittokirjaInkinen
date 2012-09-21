@@ -1,21 +1,21 @@
 <!-- 
-    Document   : resepti
+    Document   : reseptisivu
     Created on : 20.9.2012, 14:52:17
     Author     : juhainki
 -->
 <?php
-    //Tuodaan tika-yhteyden määritelmät
-    include("../TKyhteys.php");
-    //Otetaan muistiin ID, jonka perusteella tunnistetaan haluttu resepti.
-    $ID = $_GET["id"];
-    //Haetaan tietokannasta kyseinen tietue
-    $kysely = $TKyhteys->prepare("SELECT * FROM ruoka WHERE ID=" . $ID);
-    $kysely->execute();
-    //Tallennetaan noudetut tiedot käyttöä varten muuttujiin
-    $tulos = $kysely->fetch();
-    $nimi = $tulos["nimi"];
-    $aika = $tulos["aika"];
-    $ohje = $tulos["ohje"];
+//Tuodaan tika-yhteyden määritelmät
+include("../TKyhteys.php");
+//Otetaan muistiin ID, jonka perusteella tunnistetaan haluttu resepti.
+$ID = $_GET["id"];
+//Haetaan tietokannasta kyseinen tietue
+$kysely = $TKyhteys->prepare("SELECT * FROM ruoka WHERE ID=" . $ID);
+$kysely->execute();
+//Tallennetaan noudetut tiedot käyttöä varten muuttujiin
+$tulos = $kysely->fetch();
+$nimi = $tulos["nimi"];
+$aika = $tulos["aika"];
+$ohje = $tulos["ohje"];
 ?>
 <!@page contentType="text/html" pageEncoding="UTF-8" charset=UTF-8>
 <!DOCTYPE html>
@@ -26,42 +26,7 @@
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
-        <div id="banneri">
-            <ul>
-                <li>
-                    <form id="haku" action="">
-                        <input id="etsi" type="text" placeholder="Mitä etsit?">
-                        <input id="hae" type="submit" value="Hae">
-                    </form>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <ul id="navi">
-                <li><a href="../index.html">Etusivu</a></li>
-                <li>
-                    <a href="selaa.html">Reseptit</a>
-                    <ul>
-                        <li><a href="lisaa.html">Lisää uusi</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="../ateria/selaa.html">Ateriat</a>
-                    <ul>
-                        <li><a href="../ateria/lisaa.html">Lisää uusi</a></li>
-                    </ul>
-                </li>
-                <li><a href="../aines/selaa.html">Ainekset</a></li>
-                <li>
-                    <a href="../user/profiili.html">Käyttäjä</a>
-                    <ul>
-                        <li><a href="../user/kori.html">Ostoskori</a></li>
-                        <li><a href="../user/rek.html">Rekisteröidy</a></li>
-                        <li><a href="../user/kir.html">Kirjaudu</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <?php include("../valikko.php"); ?>
         <div id="raami">
             <div id="sisus">
                 <h1><?php echo $nimi ?></h1>
@@ -71,10 +36,24 @@
                         <th>Aines</th>
                         <th>Määrä</th>
                     </tr>
-                    <tr>
-                        <td><a href="aines.html">tänne</a></td>
-                        <td>dataa tietokannasta</td>
-                    </tr>
+                    <?php
+                    $kysely2 = $TKyhteys->prepare("SELECT * FROM ruoanainekset WHERE ruokaID=" . $ID);
+                    $kysely2->execute();
+                    //Tallennetaan noudetut tiedot käyttöä varten muuttujiin
+                    $tulos2 = $kysely2->fetch();
+                    $i = 0;
+                    while ($tulos2 = $kysely->fetch()) {
+                        $i++;
+                        if ($i % 2 != 0) {
+                            echo "<tr class=alt>";
+                        } else {
+                            echo "<tr>";
+                        }
+                        echo "<td>" . $tulos["ID"] . "</td>";
+                        echo "<td><a href=resepti.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
+                        echo "<td>" . $tulos["aika"] . "</td></tr>";
+                    }
+                    ?>
                 </table>
                 </p>
                 <p><b>Valmistusohje:</b><br><?php echo $ohje ?></p>
@@ -85,8 +64,6 @@
                         <td>[Kommentti]</td>
                     </tr>
                 </table>
-                </p>
-                <p><br><br>Sivuston kuvat ovat sivulta <a href="http://www.foodphotosite.com/">FoodPhotoSite.com</a></p>
             </div>
         </div>
     </body>

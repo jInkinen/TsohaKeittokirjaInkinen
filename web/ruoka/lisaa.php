@@ -1,3 +1,10 @@
+<!-- 
+    Document   : lisää ateria
+    Created on : 14.9.2012, 16:13:41
+    Author     : juhainki
+-->
+
+<!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,42 +13,7 @@
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
-        <div id="banneri">
-            <ul>
-                <li>
-                    <form id="haku" action="">
-                        <input id="etsi" type="text" placeholder="Mitä etsit?">
-                        <input id="hae" type="submit" value="Hae">
-                    </form>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <ul id="navi">
-                <li><a href="../index.html">Etusivu</a></li>
-                <li>
-                    <a href="selaa.php">Reseptit</a>
-                    <ul>
-                        <li><a href="lisaa.html">Lisää uusi</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="../ateria/selaa.html">Ateriat</a>
-                    <ul>
-                        <li><a href="../ateria/lisaa.html">Lisää uusi</a></li>
-                    </ul>
-                </li>
-                <li><a href="../aines/selaa.html">Ainekset</a></li>
-                <li>
-                    <a href="../user/profiili.html">Käyttäjä</a>
-                    <ul>
-                        <li><a href="../user/kori.html">Ostoskori</a></li>
-                        <li><a href="../user/rek.html">Rekisteröidy</a></li>
-                        <li><a href="../user/kir.html">Kirjaudu</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <?php include("../valikko.php"); ?>
         <div id="raami">
             <div id="sisus">
                 <h1>Lisää uusi resepti</h1>
@@ -49,7 +21,7 @@
                     <table>
                         <tr>
                             <td>Reseptin nimi:</td>			
-                            <td><input name="nimi" type="text" required></td>
+                            <td><input name="nimi" type="text"></td>
                         </tr>
                         <tr>
                             <td>Valmistusaika</td>			
@@ -83,21 +55,34 @@
                             <td>Valmistusohje:</td>			
                             <td><textarea name="ohje" rows=4 cols=50>Lisää ohje</TEXTAREA></td>
 			</tr>
-			<tr>
+                        <tr>
                             <td>
-                                    Ainekset:
+                                Ainekset:
                             </td>
+                        </tr>
+                        <?php
+                        if (!isset($_POST["pituus"])) {
+                            $pituus = 1;
+                        } else {
+                            $pituus = $_POST["pituus"];
+                        }
+                        for ($i = 1; $i <= $pituus; $i++) {
+                            echo "<tr><td>Aines " . $i . "</td>";
+                            echo "<td><input name=aines></td></tr>";
+                        }
+                        ?>
+                        <tr>
                             <td>
-                                    <textarea name="aines" rows=6 cols=50>Lisää jokainen aines omalle rivilleen ja erota aineksen nimi ja määrä toisistaan välilyönnillä.</TEXTAREA>
+                                <FORM METHOD="post" ACTION="lisaa.php">
+                                   <INPUT TYPE="submit" VALUE="Uusi aines">
                             </td>
-                        </tr>	
-                        <tr><td><br></td></tr>
+                        </tr>
                         <tr>
                                 <td>Kuva:</td>
                                 <td><input id="kuva" type="file"></td>
                         </tr>
                 </table><br>
-                <input id="lisaa" type="submit" value="Lisää">
+                <input id="lisaa" type="submit" value="Lähetä">
                 </form>
             </div>
         </div>
