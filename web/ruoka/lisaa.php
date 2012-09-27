@@ -1,5 +1,5 @@
 <!-- 
-    Document   : lisää ateria
+    Document   : lisää resepti
     Created on : 14.9.2012, 16:13:41
     Author     : juhainki
 -->
@@ -57,28 +57,14 @@
 			</tr>
                         <tr>
                             <td>
-                                Ainekset:
+                                Ainesten lukumäärä:
                             </td>
-                        </tr>
-                        <?php
-                        if (!isset($_POST["pituus"])) {
-                            $pituus = 1;
-                        } else {
-                            $pituus = $_POST["pituus"];
-                        }
-                        for ($i = 1; $i <= $pituus; $i++) {
-                            echo "<tr><td>Aines " . $i . "</td>";
-                            echo "<td><input name=aines></td></tr>";
-                        }
-                        ?>
-                        <tr>
                             <td>
-                                <FORM METHOD="post" ACTION="lisaa.php">
-                                   <INPUT TYPE="submit" VALUE="Uusi aines">
+                                <input name="ainekset" type="number" min="0">
                             </td>
                         </tr>
                         <tr>
-                                <td>Kuva:</td>
+                                <td>Kuva: [TODO]</td>
                                 <td><input id="kuva" type="file"></td>
                         </tr>
                 </table><br>
