@@ -10,26 +10,26 @@
 </div>
 <div>
     <ul id="navi">
-        <li><a href="/phpTsoha/index.php">Etusivu</a></li>
+        <li><a href="/tsoha/index.php">Etusivu</a></li>
         <li>
-            <a href="/phpTsoha/ruoka/selaa.php">Reseptit</a>
+            <a href="/tsoha/ruoka/selaa.php">Reseptit</a>
             <ul>
-                <li><a href="/phpTsoha/ruoka/lisaa.php">Lisää uusi</a></li>
+                <li><a href="/tsoha/ruoka/lisaa.php">Lisää uusi</a></li>
             </ul>
         </li>
         <li>
-            <a href="/phpTsoha/ateria/selaa.php">Ateriat</a>
+            <a href="/tsoha/ateria/selaa.php">Ateriat</a>
             <ul>
-                <li><a href="/phpTsoha/ateria/lisaa.php">Lisää uusi</a></li>
+                <li><a href="/tsoha/ateria/lisaa.php">Lisää uusi</a></li>
             </ul>
         </li>
-        <li><a href="/phpTsoha/aines/selaa.php">Ainekset</a></li>
+        <li><a href="/tsoha/aines/selaa.php">Ainekset</a></li>
         <li>
-            <a href="/phpTsoha/user/profiili.php">Käyttäjä</a>
+            <a href="/tsoha/user/profiili.php">Käyttäjä</a>
             <ul>
-                <li><a href="/phpTsoha/user/kori.php">Ostoskori</a></li>
-                <li><a href="/phpTsoha/user/rek.php">Rekisteröidy</a></li>
-                <li><a href="/phpTsoha/user/rek.php">Kirjaudu</a></li>
+                <li><a href="/tsoha/user/kori.php">Ostoskori</a></li>
+                <li><a href="/tsoha/user/rek.php">Rekisteröidy</a></li>
+                <li><a href="/tsoha/user/rek.php">Kirjaudu</a></li>
             </ul>
         </li>
     </ul>
