@@ -28,7 +28,7 @@
                             <td><input name="aika" type="number" min="0"> minuuttia</td>
                         </tr>
                         <tr>
-                            <td>Tyyppi:</td>
+                            <td>Tyyppi: [TODO]</td>
                             <td>
                                 <select>
                                     <option value="null">(Ei valittu)</option>
@@ -40,7 +40,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Laji:</td>
+                            <td>Laji: [TODO]</td>
                             <td>
                                 <select>
                                     <option value="null">(Ei valittu)</option>

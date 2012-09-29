@@ -2,7 +2,7 @@
 $nimi = $_POST["nimi"];
 $aika = $_POST["aika"];
 $ohje = $_POST["ohje"];
-$ainekset = $_POST["aines"];
+$ainekset = $_POST["ainekset"];
 
 if (!isset($nimi) || !isset($aika) || !isset($ohje) || !isset($ainekset)) {
     die("Sivun vaatimia arvoja ei ole asetettu. Tulithan sivulle käyttäen reseptin lisäys lomaketta?");
@@ -23,15 +23,24 @@ $insert->execute(array($nimi, $aika, $ohje));
         <title>Keittokirja Online - Resepti - Lisää ainekset</title>
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
+    <?php include("../valikko.php"); ?>
     <body>
-        <form id="lisaaForm" action="lisaaAinekset.php" method="post">
-            <?php
-            for ($i = 0; $i <= $ainekset; $i++) {
-                echo "Aines: <input name=aines[] type=text> ";
-                echo "Määrä: <input name=maara[] type=text><br>";
-            }
-            ?>
-            <input id="lisaa" type="submit" value="Lähetä">
-        </form>
+        <div id="raami">
+            <div id="sisus">
+                <form action="lisaaAinekset.php" method="post">
+                    <?php
+                    //Säilötään parametrinä tuotu ruoan nimi piilotettuun kenttään,
+                    //jotta se voidaan nätisti viedä eteenpäin seuraavalle sivulle post-menetelmällä.
+                    echo "<input name=ruokaID type=hidden value='" . $nimi . "'>";
+                    //Lisätään tarvittu määrä kenttiä reseptin aineksia varten
+                    for ($i = 1; $i <= $ainekset; $i++) {
+                        echo "Aines: <input name=aines[] type=text> ";
+                        echo "Määrä: <input name=maara[] type=text> (ilman yksikköä)<br>";
+                    }
+                    ?>
+                    <input id="lisaa" type="submit" value="Lähetä">
+                </form>
+            </div>
+        </div>
     </body>
 </html>
