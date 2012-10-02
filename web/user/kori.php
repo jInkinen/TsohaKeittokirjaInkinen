@@ -3,7 +3,15 @@
     Created on : 14.9.2012, 19:21:16
     Author     : juhainki
 -->
-
+<?php
+// Tarkistetaan onko käyttäjä jo kirjautunut sisään.
+// Jos on, ohjataan hänet omalle profiilisivulleen.
+session_start();
+if ($_SESSION["kirjautunut"] != 1) {
+    header("Location: error.php");
+    exit();
+}
+?>
 <!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
 <html>

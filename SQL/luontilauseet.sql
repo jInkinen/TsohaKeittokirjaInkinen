@@ -64,10 +64,10 @@ CREATE TABLE kommentti
 
 CREATE TABLE kayttaja
 (
-	ID bigint NOT NULL PRIMARY KEY,
-	nimi nvarchar(100),
-	salasana nvarchar(max),
-	oikeudet bit
+	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nimi nvarchar(100) NOT NULL,
+	salasana nvarchar(max) NOT NULL,
+	oikeudet int
 );
 
 CREATE TABLE ostoskori

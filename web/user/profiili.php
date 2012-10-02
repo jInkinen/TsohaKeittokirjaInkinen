@@ -3,7 +3,15 @@
     Created on : 14.9.2012, 19:21:16
     Author     : juhainki
 -->
-
+<?php
+// Tarkistetaan onko käyttäjä jo kirjautunut sisään.
+// Jos on, ohjataan hänet omalle profiilisivulleen.
+session_start();
+if ($_SESSION["kirjautunut"] != 1) {
+    header("Location: error.php");
+    exit();
+}
+?>
 <!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
 <html>
@@ -13,15 +21,24 @@
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
-        <?php include("../valikko.php"); ?>
+        <?php
+        include("../valikko.php");
+        include("../TKyhteys.php");
+        ?>
         <div id="raami">
             <div id="sisus">
-                <h1>Profiili - [TIETOKANNASTA NIMI]</h1>
+                <?php
+                $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID=" . $_SESSION["ID"]);
+                $kysely->execute();
+                $tulos = $kysely->fetch();
+                ?>
+                <h1>Profiili - <?php echo $tulos["nimi"] . " (" . $tulos["nimi"] .")"?></h1>
                 <p>Tämä on käyttäjäprofiilisi. Täältä voit poistaa profiilin tai kirjautua ulos.</p>
-                <form>
+                <form action="../kirjaaulos.php">
                     <input id="kirjauduulos" type="button" value="Kirjaudu ulos">
                 </form><br><br>
                 <form>
+                    [TODO]
                     <input id="poistak" type="button" value="Poista käyttäjätunnus">
                 </form>
             </div>
