@@ -4,6 +4,24 @@
     Author     : juhainki
 -->
 
+<?php
+$sort = "";
+$sort2 = "";
+if (!isset($_GET["sort"])) {
+    $sort = "ID";
+} else {
+    $sort = $_GET["sort"];
+}
+
+if (!isset($_GET["sort2"])) {
+    $sort2 = "ASC";
+} else {
+    $sort2 = $_GET["sort2"];
+}
+
+$taulu = "ateria";
+?>
+
 <!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
 <html>
@@ -19,27 +37,11 @@
                 <h1>Ateriat</h1>
                 <table>
                     <tr>
-                        <th>ID</th>
-                        <th>Nimi</th>
+                        <th>ID <a href="selaa.php?sort=ID&sort2=ASC">&#x25B2</a> <a href="selaa.php?sort=ID&sort2=DESC">&#x25BC</a></th>
+                        <th>NIMI <a href="selaa.php?sort=nimi&sort2=ASC">&#x25B2</a> <a href="selaa.php?sort=nimi&sort2=DESC">&#x25BC</a></th>
                     </tr>
                     <?php
-                        //Tuodaan TIKA-yhteys
-                        include("../TKyhteys.php");
-                        //Valmistellaan kysely
-                        $kysely = $TKyhteys->prepare("SELECT * FROM ateria");
-                        $kysely->execute();
-                        //Luodaan uusi rivi jokaista tulosriviä kohden
-                        $i = 0;
-                        while ($tulos = $kysely->fetch()) {
-                            $i++;
-                            if ($i % 2 != 0) {
-                                echo "<tr class=alt>";
-                            } else {
-                                echo "<tr>";
-                            }
-                                echo "<td>" . $tulos["ID"] . "</td>";
-                                echo "<td><a href=ateria.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
-                        }
+                    include("../taulukko.php");
                     ?>
                 </table>
             </div>

@@ -28,19 +28,26 @@ while ($tulos = $kysely->fetch()) {
     } else {
         echo "<tr>";
     }
-    
+
     //Syötetään taulukkoon haluttu rivi
     if ($taulu == "aines") {
         echo "<td>" . $tulos["ID"] . "</td>";
         echo "<td><a href=aines.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
         echo "<td>" . $tulos["hinta"] . "</td>";
         echo "<td>" . $tulos["ravinto"] . "</td></tr>";
-    } else if ($taulu === "ruoka") {
+        exit();
+    }
+    if ($taulu == "ruoka") {
         echo "<td>" . $tulos["ID"] . "</td>";
         echo "<td><a href=resepti.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
         echo "<td>" . $tulos["aika"] . "</td></tr>";
-    } else {
-        die("Tuntematon taulu annettu. Palaa edelliselle sivulle ja kokeile uudestaan.");
+        exit();
     }
+    if ($taulu == "ateria") {
+        echo "<td>" . $tulos["rID"] . "</td>";
+        echo "<td><a href=ateria.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td></tr>";
+        exit();
+    }
+    die("taulukko.php: Tuntematon taulu annettu. Palaa edelliselle sivulle ja kokeile uudestaan.");
 }
 ?>

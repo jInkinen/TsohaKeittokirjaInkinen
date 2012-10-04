@@ -29,57 +29,7 @@
                         </tr>
                         <tr><td><br></td></tr>
                         <tr>
-                            <td>Ruoka 1</td>
-                            <td>
-                                <select>
-                                    <option value="null">(Lista tietokannasta)</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ruoka 2</td>
-                            <td>
-                                <select>
-                                    <option value="null">(Lista tietokannasta)</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ruoka 3</td>
-                            <td>
-                                <select>
-                                    <option value="null">(Lista tietokannasta)</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ruoka 4</td>
-                            <td>
-                                <select>
-                                    <option value="null">(Lista tietokannasta)</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ruoka 5</td>
-                            <td>
-                                <select>
-                                    <option value="null">(Lista tietokannasta)</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ruoka 6</td>
-                            <td>
-                                <select>
-                                    <option value="null">(Lista tietokannasta)</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr><td><br></td></tr>
-                        <tr>
-                            <td>Kuva:</td>
+                            <td>Kuva: [TODO]</td>
                             <td><input name="kuva" type="file"></td>
                         </tr>
                     </table><br>

@@ -11,7 +11,8 @@ CREATE TABLE aines
 	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nimi varchar(100),
 	hinta double,
-	ravinto double
+	ravinto double,
+	yksikko int
 );
 
 CREATE TABLE ateria
@@ -36,6 +37,7 @@ CREATE TABLE aterianruoat
 	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	AteriaID bigint,
 	RuokaID bigint,
+	maara int,
 	FOREIGN KEY (AteriaID) REFERENCES ateria(ID),
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 );

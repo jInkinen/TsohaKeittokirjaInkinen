@@ -1,9 +1,16 @@
-Lis‰tt‰v‰:
+Lis√§tt√§v√§:
 
 Haku-toiminto
 Hakutulos-sivu
 Reseptin/aterian muokkaus
 Kommentointi
-Kirjautuminen
-K‰ytt‰j‰hallinta
-Reseptin luonnin yhteydess‰ aineiden lis‰ys
+Ostoskori
+Kuvien lis√§ys
+Reseptin tyyppi/laji
+Ainekselle yksikk√∂ (kpl/l/kg)
+
+Korjattava:
+Tyyli pitkien listojen osalta
+Lis√§√§ kommentointia sek√§ virhetarkistuksia
+Est√§ null nimet resepteille yms
+Resepti-lista k√§ytt√§m√§√§n taulukko.phpta

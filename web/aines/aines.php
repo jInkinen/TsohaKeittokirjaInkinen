@@ -3,7 +3,7 @@
     Created on : 13.9.2012, 17:44:36
     Author     : juhainki
 -->
-
+<?php session_start(); ?>
 <!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
 <html>
@@ -15,69 +15,42 @@
     <body>
         <?php include("../valikko.php"); ?>
         <div id="raami">
-            <div id="menu">
-                <ul>
-                    <li>
-                        <h2>Etusivu</h2>
-                        <ul>
-                            <li><a href="index.html">Etusivu</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h2>Reseptit</h2>
-                        <ul>
-                            <li><a href="selaares.html">Selaa reseptejä</a></li>
-                            <li><a href="#">Lisää reseptejä</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h2>Ateriat</h2>
-                        <ul>
-                            <li><a href="#">Selaa aterioita</a></li>
-                            <li><a href="#">Lisää aterioita</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h2>Ainekset</h2>
-                        <ul>
-                            <li><a href="#">Selaa aineksia</a></li>
-                            <li><a href="#">Lisää aineksia</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h2>Käyttäjä</h2>
-                        <ul>
-                            <li><a href="#">Ostoskori</a></li>
-                            <li><a href="#">Rekisteröidy</a></li>
-                            <li><a href="#">Kirjaudu sisään</a></li>				
-                        </ul>
-                    </li>
-                </ul>
-            </div>
             <div id="sisus">
-                <h1>[AINEKSEN NIMI]</h1>
-                <form id="aines" action="">
+                <?php
+                include("../TKyhteys.php");
+                $kysely = $TKyhteys->prepare("SELECT * FROM aines WHERE ID=" . $ID);
+                $kysely->execute();
+                $tulos = $kysely->fetch();
+                $nimi = $tulos["nimi"];
+                $hinta = $tulos["hinta"];
+                $ravinto = $tulos["ravinto"];
+                $yksikko = $tulos["yksikko"];
+
+                echo "<h1>" . $nimi . "<h1>";
+                ?>
+                <form id="aines" action="muokkaa.php" method="post">
                     <table>
                         <tr>
                             <td>Vanha hinta</td>
-                            <td>[TIETOKANNASTA]</td>
+                            <td><?php echo $hinta . " €/" . $yksikko; ?></td>
                         </tr>
                         <tr>
                             <td>Uusi hinta</td> 
-                            <td><input id="nimi" type="text" value="[TIKA]"> €/kpl</td>
+                            <td><?php echo "<input name=hinta type=text value=" . $hinta . "> €/" . $yksikko ?></td>
                         </tr>
                         <tr><td><br></td></tr>
-                        <tr>
-                            <td>Ravintoarvo</td>
-                            <td>[TIETOKANNASTA]</td>
-                        </tr>
-                        <tr>
-                            <td>Uusi ravintoarvo</td> 
-                            <td><input id="nimi" type="text" value="[TIKA]"> €/kpl</td>
-                        </tr>
-                    </table>
-                    <br><br>
-                    <input id="tallenna" type="submit" value="Tallenna">
+                        <?php
+                        // Jos käyttäjä ei ole rekisteröitynyt, hän ei pääse muokkaamaan tietoja
+                        if ($_SESSION["kirjautunut"] != 1) {
+                            exit();
+                        }
+                        echo "<tr><td>Ravintoarvo</td><td>";
+                        echo $ravinto . " kcal/" . $yksikko;
+                        echo "</td></tr><tr><td>Uusi ravintoarvo</td><td>";
+                        echo "<input name=ravinto type=text value=" . $ravinto . "> kcal/" . $yksikko;
+                        echo "</td></tr></table><br><br>";
+                        echo "<input name=tallenna type=submit value=Tallenna>";
+                        ?>
                 </form>
             </div>
         </div>
