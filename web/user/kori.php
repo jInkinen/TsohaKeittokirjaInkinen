@@ -8,7 +8,7 @@
 // Jos on, ohjataan hänet omalle profiilisivulleen.
 session_start();
 if ($_SESSION["kirjautunut"] != 1) {
-    header("Location: error.php");
+    header("Location: ../error.php");
     exit();
 }
 ?>

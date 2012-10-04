@@ -7,18 +7,15 @@
  */
 
 //Parametrien käsittely
-$taulu = $_GET["t"];
-$jarjestys = $_GET["j"];
-$ascdesc = $_GET["ad"];
-if (!isset($jarjestys) || !isset($taulu) || !isset($ascdesc)) {
-    die("järjestysta ei annettu sivulle.");
+if (!isset($taulu) || !isset($sort) || !isset($sort2)) {
+    die("Parametrivirhe.");
 }
 
 //Luodaan TIKA-yhteys
 include("../TKyhteys.php");
 
 //Valmistellaan kysely ja suoritetaan se
-$kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu . " ORDER BY " . $jarjestys . " " . $ascdesc);
+$kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu . " ORDER BY " . $sort . " " . $sort2);
 $kysely->execute();
 
 //Kirjoitetaan tulokset sivulle
@@ -33,7 +30,7 @@ while ($tulos = $kysely->fetch()) {
     }
     
     //Syötetään taulukkoon haluttu rivi
-    if ($taulu === "aines") {
+    if ($taulu == "aines") {
         echo "<td>" . $tulos["ID"] . "</td>";
         echo "<td><a href=aines.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
         echo "<td>" . $tulos["hinta"] . "</td>";

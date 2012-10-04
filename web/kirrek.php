@@ -24,23 +24,24 @@ if ($nimi == "" || $ss == "") {
     die("Virhe: Salasana tai käyttäjänimi on tyhjä.");
 }
 
-$kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE username=" . $nimi);
+$kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE nimi='" . $nimi . "'");
 $kysely->execute();
 
 $tulos = $kysely->fetchAll();
 $maara = count($tulos);
-if ($maara === 1) { //Käyttäjä olemassa - Yritetään kirjautua sisään
-    $oikeass = $tulos["salasana"];
-    if ($oikeass === $ss) { //Annettu salasana on oikea.
+if ($maara == 1) { //Käyttäjä olemassa - Yritetään kirjautua sisään
+    $oikeass = $tulos[0]["salasana"];
+	echo $salasana . " " . $ss;
+    if ($oikeass == $ss) { //Annettu salasana on oikea.
         $_SESSION["kirjautunut"] = 1;
-        $_SESSION["ID"] = $tulos["ID"];
+        $_SESSION["kaytID"] = $tulos[0]["ID"];
         header("Location: user/profiili.php");
     } else {
         die("Tili on jo luotu samalla nimellä. Annoitko oikean salasanan?");
     }
     
 }
-if ($maara === 0) { //Käyttäjää ei ole, luodaan se.
+if ($maara == 0) { //Käyttäjää ei ole, luodaan se.
     $insert = $TKyhteys->prepare("INSERT INTO kayttaja (nimi, salasana, oikeudet) VALUES (?, ?, ?)");
     $insert->execute(array($nimi, $ss, 0));
     header("Location: index.php");

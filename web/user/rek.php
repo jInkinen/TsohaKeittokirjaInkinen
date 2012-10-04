@@ -27,10 +27,10 @@ if ($_SESSION["kirjautunut"] == 1) {
             <div id="sisus">
                 <h1>Luo uusi käyttäjätunnus / Kirjaudu sisään</h1>
                 <p>Syötä käyttäjätunnus ja salasana. Jos käyttäjätunnusta ei ole, se luodaan, jonka jälkeen voit kirjautua sisään sitä käyttäen.</p>
-                <form id="rekisteroidy" action="../kirrek.php" method="post">
+                <form id="rek" action="../kirrek.php" method="post">
                     Tunnus: <input name="nimi" type="text"><br>
                     Salasana: <input name="ss" type="password"><br>
-                    <input id="luo" type="button" value="Luo/kirjaudu">
+                    <input id="luo" type="submit" value="Lähetä">
                 </form>
             </div>
         </div>

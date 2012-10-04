@@ -5,12 +5,21 @@
 -->
 
 <?php
+$sort = "";
+$sort2 = "";
 if (!isset($_GET["sort"])) {
     $sort = "ID";
+} else {
+    $sort = $_GET["sort"];
 }
+
 if (!isset($_GET["sort2"])) {
     $sort2 = "ASC";
+} else {
+    $sort2 = $_GET["sort2"];
 }
+
+$taulu = "aines";
 ?>
 
 <!@page contentType="text/html" pageEncoding="UTF-8">
@@ -34,7 +43,7 @@ if (!isset($_GET["sort2"])) {
                         <th>RAVINTO <a href="selaa.php?sort=ravinto&sort2=ASC">&#x25B2</a> <a href="selaa.php?sort=ravinto&sort2=DESC">&#x25BC</a></th>
                     </tr>
                     <?php
-                    include("../taulukko.php?t=aines&j=" . $sort . "&ad=" . $sort2);
+                    include("../taulukko.php");
                     ?>
                 </table>
             </div>

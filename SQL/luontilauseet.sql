@@ -57,7 +57,7 @@ CREATE TABLE ruokaTyypit
 CREATE TABLE kommentti
 (
 	ID bigint NOT NULL PRIMARY KEY,
-	teksti nvarchar(max),
+	teksti nvarchar(1000),
 	pvm smalldatetime NOT NULL,
 	FOREIGN KEY (Kommentoija) REFERENCES kayttaja(ID)
 );
@@ -66,7 +66,7 @@ CREATE TABLE kayttaja
 (
 	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nimi nvarchar(100) NOT NULL,
-	salasana nvarchar(max) NOT NULL,
+	salasana nvarchar(255) NOT NULL,
 	oikeudet int
 );
 

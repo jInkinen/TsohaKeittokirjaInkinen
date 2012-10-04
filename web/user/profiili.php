@@ -8,7 +8,7 @@
 // Jos on, ohjataan hänet omalle profiilisivulleen.
 session_start();
 if ($_SESSION["kirjautunut"] != 1) {
-    header("Location: error.php");
+    header("Location: rek.php");
     exit();
 }
 ?>
@@ -28,14 +28,14 @@ if ($_SESSION["kirjautunut"] != 1) {
         <div id="raami">
             <div id="sisus">
                 <?php
-                $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID=" . $_SESSION["ID"]);
+                $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID='" . $_SESSION["kaytID"] . "'");
                 $kysely->execute();
                 $tulos = $kysely->fetch();
                 ?>
-                <h1>Profiili - <?php echo $tulos["nimi"] . " (" . $tulos["nimi"] .")"?></h1>
+                <h1>Profiili - <?php echo $tulos["nimi"] . " (ID: " . $tulos["ID"] .")"?></h1>
                 <p>Tämä on käyttäjäprofiilisi. Täältä voit poistaa profiilin tai kirjautua ulos.</p>
                 <form action="../kirjaaulos.php">
-                    <input id="kirjauduulos" type="button" value="Kirjaudu ulos">
+                    <input id="kirjauduulos" type="submit" value="Kirjaudu ulos">
                 </form><br><br>
                 <form>
                     [TODO]

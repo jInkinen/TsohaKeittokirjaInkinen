@@ -28,8 +28,7 @@
             <a href="/tsoha/user/profiili.php">Käyttäjä</a>
             <ul>
                 <li><a href="/tsoha/user/kori.php">Ostoskori</a></li>
-                <li><a href="/tsoha/user/rek.php">Rekisteröidy</a></li>
-                <li><a href="/tsoha/user/rek.php">Kirjaudu</a></li>
+                <li><a href="/tsoha/user/rek.php">Sisään</a></li>
             </ul>
         </li>
     </ul>
