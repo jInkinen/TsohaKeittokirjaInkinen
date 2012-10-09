@@ -74,7 +74,9 @@ CREATE TABLE kayttaja
 
 CREATE TABLE ostoskori
 (
+	kayttaja bigint,
+	RuokaID bigint,
 	FOREIGN KEY (kayttaja) REFERENCES kayttaja(ID),
-	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
+	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
 	maara int
 );

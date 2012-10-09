@@ -43,9 +43,9 @@ $kuvaus = $tulos["kuvaus"];
                     <tr>
                         <th>Aterian osat:</th>
                         <th><form action="lisaaRuoka.php" method="post">
-				<?php echo "<input type=hidden name='ID' value=" . $ID . ">"; ?>
-				 <input type="submit" value="Lisää uusi ruoka">
-			</form></th>
+                        <?php echo "<input type=hidden name='ID' value=" . $ID . ">"; ?>
+                        <input type="submit" value="Lisää uusi ruoka">
+                    </form></th>
                     </tr>
                     <?php
                     $kysely = $TKyhteys->prepare("SELECT * FROM aterianruoat WHERE AteriaID=" . $ID);

@@ -6,11 +6,11 @@
 // Jos käyttäjä on jo kirjautunut sisään, ohjataan hänet omaan profiiliinsa.
 session_start();
 if ($_SESSION["kirjautunut"] == 1) {
-    header("Location: user/profiili.php");
+    header("Location: profiili.php");
     exit();
 }
 
-include("TKyhteys.php");
+include("../TKyhteys.php");
 
 $nimi = $_POST["nimi"];
 // suojataan salasana md5-muunnolla, jotta sitä ei tallenneta selväkielisenä
@@ -31,7 +31,6 @@ $tulos = $kysely->fetchAll();
 $maara = count($tulos);
 if ($maara == 1) { //Käyttäjä olemassa - Yritetään kirjautua sisään
     $oikeass = $tulos[0]["salasana"];
-	echo $salasana . " " . $ss;
     if ($oikeass == $ss) { //Annettu salasana on oikea.
         $_SESSION["kirjautunut"] = 1;
         $_SESSION["kaytID"] = $tulos[0]["ID"];
@@ -44,6 +43,6 @@ if ($maara == 1) { //Käyttäjä olemassa - Yritetään kirjautua sisään
 if ($maara == 0) { //Käyttäjää ei ole, luodaan se.
     $insert = $TKyhteys->prepare("INSERT INTO kayttaja (nimi, salasana, oikeudet) VALUES (?, ?, ?)");
     $insert->execute(array($nimi, $ss, 0));
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 ?>

@@ -24,32 +24,50 @@ if ($_SESSION["kirjautunut"] != 1) {
         <?php
         include("../valikko.php");
         include("../TKyhteys.php");
-        $_SESSION["kirjautunut"] != 1
-        
+
+        $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID='" . $_SESSION["kaytID"] . "'");
+        $kysely->execute();
+        $kayttaja = $kysely->fetch();
         ?>
         <div id="raami">
             <div id="sisus">
-                <h1>Ostoskori - [TIETOKANNASTA NIMI]</h1>
+                <h1>Ostoskori - <?php echo $kayttaja["nimi"]; ?></h1>
                 <br>
-                <form id="tyhjennakori" action="">
+                <form id="tyhjennakori" action="korityhjaksi.php" method="post">
                     <input id="tyhjenna" type="submit" value="Tyhjennä ostoskori">
-                </form><br>
+                </form>
+                <form id="luolista" action="luolista.php" method="post">
+                    <input id="listaksi" type="submit" value="Luo ostoslista">
+                </form>
+                <br>
+
                 <table>
                     <tr>
                         <th>Aines</th>
                         <th>Määrä</th>
 
                     </tr>
-                    <tr>
-                        
-                        <td>tänne</td>
-                        <td>dataa TIKAsta</td>
-                        <td>
-                            <form id="poistakorista" action="">
-                                <input id="poista" type="submit" value="Poista">
-                            </form>
-                        </td>
-                    </tr>
+                    <?php
+                    include("../TKyhteys.php");
+
+                    $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = '" . $_SESSION["kaytID"] . "'");
+                    $kori->execute();
+
+                    $i = 0;
+                    while ($rivi = $kori->fetch()) {
+                        $i++;
+                        if ($i % 2 != 0) {
+                            echo "<tr class=alt>";
+                        } else {
+                            echo "<tr>";
+                        }
+                        $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE ID='" . $rivi["RuokaID"] . "'");
+                        $ruoka->execute();
+
+                        echo "<td>" . $ruoka->fetch()[0] . "</td>";
+                        echo "<td>" . $tulos["maara"] . "</td></tr>";
+                    }
+                    ?>
                 </table>
             </div>
         </div>
