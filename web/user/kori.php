@@ -21,7 +21,12 @@ if ($_SESSION["kirjautunut"] != 1) {
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
-        <?php include("../valikko.php"); ?>
+        <?php
+        include("../valikko.php");
+        include("../TKyhteys.php");
+        $_SESSION["kirjautunut"] != 1
+        
+        ?>
         <div id="raami">
             <div id="sisus">
                 <h1>Ostoskori - [TIETOKANNASTA NIMI]</h1>
@@ -36,6 +41,7 @@ if ($_SESSION["kirjautunut"] != 1) {
 
                     </tr>
                     <tr>
+                        
                         <td>tänne</td>
                         <td>dataa TIKAsta</td>
                         <td>

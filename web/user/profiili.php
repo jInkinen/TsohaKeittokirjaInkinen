@@ -34,7 +34,7 @@ if ($_SESSION["kirjautunut"] != 1) {
                 ?>
                 <h1>Profiili - <?php echo $tulos["nimi"] . " (ID: " . $tulos["ID"] .")"?></h1>
                 <p>Tämä on käyttäjäprofiilisi. Täältä voit poistaa profiilin tai kirjautua ulos.</p>
-                <form action="../kirjaaulos.php">
+                <form action="kirjaaulos.php">
                     <input id="kirjauduulos" type="submit" value="Kirjaudu ulos">
                 </form><br><br>
                 <form>

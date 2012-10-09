@@ -35,19 +35,15 @@ while ($tulos = $kysely->fetch()) {
         echo "<td><a href=aines.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
         echo "<td>" . $tulos["hinta"] . "</td>";
         echo "<td>" . $tulos["ravinto"] . "</td></tr>";
-        exit();
-    }
-    if ($taulu == "ruoka") {
+    } else if ($taulu == "ruoka") {
         echo "<td>" . $tulos["ID"] . "</td>";
         echo "<td><a href=resepti.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
         echo "<td>" . $tulos["aika"] . "</td></tr>";
-        exit();
-    }
-    if ($taulu == "ateria") {
-        echo "<td>" . $tulos["rID"] . "</td>";
+    } else if ($taulu == "ateria") {
+        echo "<td>" . $tulos["ID"] . "</td>";
         echo "<td><a href=ateria.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td></tr>";
-        exit();
-    }
+    } else {
     die("taulukko.php: Tuntematon taulu annettu. Palaa edelliselle sivulle ja kokeile uudestaan.");
+    }
 }
 ?>

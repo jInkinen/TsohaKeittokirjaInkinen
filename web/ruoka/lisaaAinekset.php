@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if ($_SESSION["kirjautunut"] != 1) {
+    header("Location: ../error.php");
+    exit();
+}
+
 $aines = $_POST["aines"];
 $maara = $_POST["maara"];
 $rnimi = $_POST["ruokaID"];

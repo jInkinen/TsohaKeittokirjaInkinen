@@ -26,7 +26,7 @@
                 $ravinto = $tulos["ravinto"];
                 $yksikko = $tulos["yksikko"];
 
-                echo "<h1>" . $nimi . "<h1>";
+                echo "<h1>" . $nimi . "</h1>";
                 ?>
                 <form id="aines" action="muokkaa.php" method="post">
                     <table>
@@ -35,21 +35,28 @@
                             <td><?php echo $hinta . " €/" . $yksikko; ?></td>
                         </tr>
                         <tr>
-                            <td>Uusi hinta</td> 
-                            <td><?php echo "<input name=hinta type=text value=" . $hinta . "> €/" . $yksikko ?></td>
+                            <?php
+                            // Jos käyttäjä ei ole kirjautunut sisään, hän ei pääse muokkaamaan tietoja
+                            if ($_SESSION["kirjautunut"] != 1) {
+                                echo "<td>Uusi hinta</td><td>";
+                                echo "<input name=hinta type=text value=" . $hinta . "> €/" . $yksikko . "</td>";
+                            }
+                            ?>
                         </tr>
                         <tr><td><br></td></tr>
                         <?php
-                        // Jos käyttäjä ei ole rekisteröitynyt, hän ei pääse muokkaamaan tietoja
-                        if ($_SESSION["kirjautunut"] != 1) {
-                            exit();
-                        }
                         echo "<tr><td>Ravintoarvo</td><td>";
                         echo $ravinto . " kcal/" . $yksikko;
-                        echo "</td></tr><tr><td>Uusi ravintoarvo</td><td>";
-                        echo "<input name=ravinto type=text value=" . $ravinto . "> kcal/" . $yksikko;
-                        echo "</td></tr></table><br><br>";
-                        echo "<input name=tallenna type=submit value=Tallenna>";
+
+                        if ($_SESSION["kirjautunut"] != 1) {
+                            //Viedään eteenpäin aterian ID piilotetussa kentässä.
+                            echo "<input name=ID type=hidden value=" . $ID . ">";
+                            
+                            echo "</td></tr><tr><td>Uusi ravintoarvo</td><td>";
+                            echo "<input name=ravinto type=text value=" . $ravinto . "> kcal/" . $yksikko;
+                            echo "</td></tr></table><br><br>";
+                            echo "<input name=tallenna type=submit value=Tallenna>";
+                        }
                         ?>
                 </form>
             </div>

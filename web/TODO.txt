@@ -14,3 +14,4 @@ Tyyli pitkien listojen osalta
 Lisää kommentointia sekä virhetarkistuksia
 Estä null nimet resepteille yms
 Resepti-lista käyttämään taulukko.phpta
+ainesten muokkaus

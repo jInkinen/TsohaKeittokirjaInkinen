@@ -21,6 +21,6 @@ $select = $TKyhteys->prepare("SELECT ID FROM ateria WHERE nimi='" . $nimi . "'")
 $select->execute();
 $ID = $select->fetch();
 
-header("Location: ateria.php?id=" . $ID);
+header("Location: ateria.php?id=" . $ID["ID"]);
 ?>
 

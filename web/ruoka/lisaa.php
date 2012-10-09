@@ -3,7 +3,14 @@
     Created on : 14.9.2012, 16:13:41
     Author     : juhainki
 -->
+<?php
+session_start();
 
+if ($_SESSION["kirjautunut"] != 1) {
+    header("Location: ../error.php");
+    exit();
+}
+?>
 <!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
 <html>

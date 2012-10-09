@@ -42,12 +42,13 @@ $kuvaus = $tulos["kuvaus"];
                 <table>
                     <tr>
                         <th>Aterian osat:</th>
-                        <th><form><input type="submit" value="Lisää uusi ruoka"></form></th>
+                        <th><form action="lisaaRuoka.php" method="post">
+				<?php echo "<input type=hidden name='ID' value=" . $ID . ">"; ?>
+				 <input type="submit" value="Lisää uusi ruoka">
+			</form></th>
                     </tr>
                     <?php
-                    include ("../TKyhteys.php");
-
-                    $kysely = $TKyhteys->prepare("SELECT * FROM aterianruoat WHERE aID=" . $ID);
+                    $kysely = $TKyhteys->prepare("SELECT * FROM aterianruoat WHERE AteriaID=" . $ID);
                     $kysely->execute();
                     //Käydään läpi saatu tulos
                     while ($tulos = $kysely->fetch()) {
@@ -60,12 +61,11 @@ $kuvaus = $tulos["kuvaus"];
                         }
 
                         //Selvitetään ruoka-taulusta ruoan nimi saadun ID:n perusteella
-                        $kysely2 = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE rID=" . $tulos["rID"]);
+                        $kysely2 = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE ID='" . $tulos["RuokaID"] . "'");
                         $kysely2->execute();
-                        $ruoanNimi = $kysely->fetch();
+                        $ruoanNimi = $kysely2->fetch();
                         //Syötetään taulukkoon haluttu rivi
-                        echo "<td><a href=resepti.php?id=" . $tulos["rID"] . ">" . $ruoanNimi . "</a></td>";
-                        echo "<td>" . $tulos["maara"] . "</td></tr>";
+                        echo "<td><a href=../ruoka/resepti.php?id=" . $tulos["RuokaID"] . ">" . $ruoanNimi[0] . "</a></td>";
                     }
                     ?>
                 </table>
