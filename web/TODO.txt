@@ -1,10 +1,9 @@
-Lisättävä:
+﻿Lisättävä:
 
 Haku-toiminto
 Hakutulos-sivu
 Reseptin/aterian muokkaus
 Kommentointi
-Ostoskori
 Kuvien lisäys
 Reseptin tyyppi/laji
 Ainekselle yksikkö (kpl/l/kg)
@@ -14,4 +13,5 @@ Tyyli pitkien listojen osalta
 Lisää kommentointia sekä virhetarkistuksia
 Estä null nimet resepteille yms
 Resepti-lista käyttämään taulukko.phpta
-ainesten muokkaus
+Ainesten muokkaus
+Ostoslistan tuplien poisto

@@ -1,9 +1,9 @@
 <div id="banneri">
     <ul>
         <li>
-            <form id="haku" action="">
-                <input id="etsi" type="text" placeholder="Mitä etsit?">
-                <input id="hae" type="submit" value="Hae">
+            <form id="haku" action="hakuTulokset.php" methog="get">
+                <input name="hakusana" type="text" placeholder="Mitä etsit?">
+                <input name="etsi" type="submit" value="Etsi">
             </form>
         </li>
     </ul>
