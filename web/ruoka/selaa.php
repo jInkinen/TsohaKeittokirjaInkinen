@@ -23,48 +23,23 @@
                         <th>NIMI <a href="selaa.php?sort=nimi&sort2=ASC">&#x25B2</a> <a href="selaa.php?sort=nimi&sort2=DESC">&#x25BC</a></th>
                         <th>AIKA <a href="selaa.php?sort=aika&sort2=ASC">&#x25B2</a> <a href="selaa.php?sort=aika&sort2=DESC">&#x25BC</a></th>
                     </tr>
-                    
+
                     <?php
-                    //asetetaan taulukon oletusjärjestys
-                    $order = "ID";
-                    //Tutkitaan haluaako käyttäjä järjestää taulukon eri tavalla
-                    if (isset($_GET["sort"])) {
+                    // Asetetaan haluttu järjestys taulukon tulostamista varten.
+                    if (!isset($_GET["sort"])) {
+                        $sort = "ID";
+                    } else {
                         $sort = $_GET["sort"];
-                        if ($sort == "nimi" || $sort == "aika") {
-                            $order = $sort;
-                        }
-                        //else: jää oletukseksi
-                    } //else: jää oletukseksi
-                    
-                    $ad = "ASC";
-                    if (isset($_GET["sort2"])) {
-                        $sort2 = $_GET["sort2"];
-                        if ($sort2 == "DESC") {
-                            $ad = $sort2;
-                        }
-                        //else: jää oletukseksi
-                    } //else: jää oletukseksi
-
-                    //Luodaan TIKA-yhteys
-                    include("../TKyhteys.php");
-                    //Valmistellaan kysely
-
-
-                    $kysely = $TKyhteys->prepare("SELECT * FROM ruoka ORDER BY " . $order . " " . $ad);
-                    $kysely->execute();
-                    //Luodaan uusi rivi jokaista tulosriviä kohden
-                    $i = 0;
-                    while ($tulos = $kysely->fetch()) {
-                        $i++;
-                        if ($i % 2 != 0) {
-                            echo "<tr class=alt>";
-                        } else {
-                            echo "<tr>";
-                        }
-                        echo "<td>" . $tulos["ID"] . "</td>";
-                        echo "<td><a href=resepti.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
-                        echo "<td>" . $tulos["aika"] . "</td></tr>";
                     }
+
+                    if (!isset($_GET["sort2"])) {
+                        $sort2 = "ASC";
+                    } else {
+                        $sort2 = $_GET["sort2"];
+                    }
+                    $taulu = "ruoka";
+                    // Tulostetaan taulukko
+                    include ("../taulukko.php");
                     ?>
                 </table>
             </div>

@@ -6,6 +6,11 @@ if ($_SESSION["kirjautunut"] != 1) {
     header("Location: ../error.php");
     exit();
 }
+
+if (!isset($nimi) || $nimi == "") {
+    die("Aterian nimi puuttuu.");
+}
+
 $nimi = $_POST["nimi"];
 $kuvaus = $_POST["kuvaus"];
 

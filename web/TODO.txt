@@ -1,17 +1,15 @@
-﻿Lisättävä:
+---Lisättävä:
 
-Haku-toiminto
-Hakutulos-sivu
 Reseptin/aterian muokkaus
 Kommentointi
 Kuvien lisäys
 Reseptin tyyppi/laji
-Ainekselle yksikkö (kpl/l/kg)
+Korista poistaminen
 
-Korjattava:
+---Korjattava:
 Tyyli pitkien listojen osalta
 Lisää kommentointia sekä virhetarkistuksia
 Estä null nimet resepteille yms
-Resepti-lista käyttämään taulukko.phpta
 Ainesten muokkaus
 Ostoslistan tuplien poisto
+

@@ -35,10 +35,10 @@ if ($_SESSION["kirjautunut"] != 1) {
                             <td><input name="aika" type="number" min="0"> minuuttia</td>
                         </tr>
                         <tr>
-                            <td>Tyyppi: [TODO]</td>
+                            <td>Tyyppi:</td>
                             <td>
                                 <select>
-                                    <option value="null">(Ei valittu)</option>
+                                    <option value="">(Ei valittu)</option>
                                     <option value="alku">Alkuruoka</option>
                                     <option value="paa">Pääruoka</option>
                                     <option value="jalki">Jälkiruoka</option>
@@ -47,10 +47,10 @@ if ($_SESSION["kirjautunut"] != 1) {
                             </td>
                         </tr>
                         <tr>
-                            <td>Laji: [TODO]</td>
+                            <td>Laji:</td>
                             <td>
                                 <select>
-                                    <option value="null">(Ei valittu)</option>
+                                    <option value="">(Ei valittu)</option>
                                     <option value="liha">Liha</option>
                                     <option value="kala">Kala</option>
                                     <option value="kasvis">Kasvis</option>

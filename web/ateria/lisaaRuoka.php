@@ -27,7 +27,7 @@ if (!isset($_POST["ID"])) {
 
                 <form action="lisaaRuokaDo.php" method="post">
                     <?php
-//Viedään eteenpäin aterian ID piilotetussa kentässä.
+                    //Viedään eteenpäin aterian ID piilotetussa kentässä.
                     echo "<input name=aID type=hidden value=" . $_POST["ID"] . ">";
                     ?>
                     <select name="ruoka">

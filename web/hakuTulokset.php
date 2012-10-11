@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="tyyli/tyylit.css">
+        <link rel="stylesheet" href="tyyli/tyylit.css">
         <title>Keittokirja Online - Hakutulokset</title>
     </head>
     <body>
@@ -22,10 +22,9 @@
                     $sort = "nimi";
                     $sort2 = "ASC";
                     $taulu = "ruoka";
-	$ehto = "nimi";		
-	$arvo = $hakusana;
+                    $arvo = $hakusana;
                     include("taulukko.php");
-      ?>
+                    ?>
                 </table>
                 <h3>Ateriat:</h3><br>
                 <table>

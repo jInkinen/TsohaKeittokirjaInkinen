@@ -5,8 +5,7 @@
 -->
 
 <?php
-$sort = "";
-$sort2 = "";
+// Asetetaan haluttu järjestys taulukon tulostamista varten.
 if (!isset($_GET["sort"])) {
     $sort = "ID";
 } else {
@@ -41,6 +40,7 @@ $taulu = "ateria";
                         <th>NIMI <a href="selaa.php?sort=nimi&sort2=ASC">&#x25B2</a> <a href="selaa.php?sort=nimi&sort2=DESC">&#x25BC</a></th>
                     </tr>
                     <?php
+                    // Tulostetaan taulukko
                     include("../taulukko.php");
                     ?>
                 </table>
