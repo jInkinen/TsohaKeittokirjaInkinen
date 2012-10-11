@@ -17,8 +17,10 @@
         <div id="raami">
             <div id="sisus">
                 <?php
+		$ID = $_GET["id"];
+
                 include("../TKyhteys.php");
-                $kysely = $TKyhteys->prepare("SELECT * FROM aines WHERE ID=" . $ID);
+                $kysely = $TKyhteys->prepare("SELECT * FROM aines WHERE ID='" . $ID . "'");
                 $kysely->execute();
                 $tulos = $kysely->fetch();
                 $nimi = $tulos["nimi"];
@@ -37,7 +39,7 @@
                         <tr>
                             <?php
                             // Jos käyttäjä ei ole kirjautunut sisään, hän ei pääse muokkaamaan tietoja
-                            if ($_SESSION["kirjautunut"] != 1) {
+                            if ($_SESSION["kirjautunut"] == 1) {
                                 echo "<td>Uusi hinta</td><td>";
                                 echo "<input name=hinta type=text value=" . $hinta . "> €/" . $yksikko . "</td>";
                             }
@@ -48,10 +50,9 @@
                         echo "<tr><td>Ravintoarvo</td><td>";
                         echo $ravinto . " kcal/" . $yksikko;
 
-                        if ($_SESSION["kirjautunut"] != 1) {
+                        if ($_SESSION["kirjautunut"] == 1) {
                             //Viedään eteenpäin aterian ID piilotetussa kentässä.
                             echo "<input name=ID type=hidden value=" . $ID . ">";
-                            
                             echo "</td></tr><tr><td>Uusi ravintoarvo</td><td>";
                             echo "<input name=ravinto type=text value=" . $ravinto . "> kcal/" . $yksikko;
                             echo "</td></tr></table><br><br>";

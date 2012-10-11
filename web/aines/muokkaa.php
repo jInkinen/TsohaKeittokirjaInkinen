@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$ID = $_POST["id"];
+$ID = $_POST["ID"];
 $hinta = $_POST["hinta"];
 $ravinto = $_POST["ravinto"];
 
@@ -16,8 +16,8 @@ if ($_SESSION["kirjautunut"] != 1) {
 
 //Päivitetään tietokantaan uudet tiedot annettujen tietojen mukaan
 include("../TKyhteys.php");
-$update = $TKyhteys->prepare("UPDATE aines SET (hinta, ravinto) WHERE ID=" . $ID);
-$update->execute(array($hinta, $ravinto));
-
+$muutos = $TKyhteys->prepare("UPDATE aines SET hinta = ?, ravinto = ? WHERE ID = ?");
+$muutos->execute(array($hinta, $ravinto, $ID));
+//echo "<br>" . $muutos->rowCount();
 header("Location: aines.php?id=" . $ID);
 ?>

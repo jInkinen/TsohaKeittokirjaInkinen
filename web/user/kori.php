@@ -4,8 +4,7 @@
     Author     : juhainki
 -->
 <?php
-// Tarkistetaan onko käyttäjä jo kirjautunut sisään.
-// Jos on, ohjataan hänet omalle profiilisivulleen.
+// Varmistetaan, että käyttäjä on kirjautunut
 session_start();
 if ($_SESSION["kirjautunut"] != 1) {
     header("Location: ../error.php");
@@ -24,9 +23,8 @@ if ($_SESSION["kirjautunut"] != 1) {
         <?php
         include("../valikko.php");
         include("../TKyhteys.php");
-
-        $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID='" . $_SESSION["kaytID"] . "'");
-        $kysely->execute();
+        $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID = ?");
+        $kysely->execute(array($_SESSION["kaytID"]));
         $kayttaja = $kysely->fetch();
         ?>
         <div id="raami">
@@ -47,11 +45,11 @@ if ($_SESSION["kirjautunut"] != 1) {
                         <th>Määrä</th>
 
                     </tr>
-                    <?php
-                    include("../TKyhteys.php");
 
-                    $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = '" . $_SESSION["kaytID"] . "'");
-                    $kori->execute();
+
+                    <?php
+                    $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = ?");
+                    $kori->execute(array($_SESSION["kaytID"]));
 
                     $i = 0;
                     while ($rivi = $kori->fetch()) {
@@ -61,13 +59,13 @@ if ($_SESSION["kirjautunut"] != 1) {
                         } else {
                             echo "<tr>";
                         }
-                        $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE ID='" . $rivi["RuokaID"] . "'");
-                        $ruoka->execute();
+                        $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE ID = ?");
+                        $ruoka->execute(array($rivi["RuokaID"]));
 
-                        echo "<td>" . $ruoka->fetch()[0] . "</td>";
+                        echo "<td>" . $ruoka->fetch() . "</td>";
                         echo "<td>" . $tulos["maara"] . "</td></tr>";
                     }
-                    ?>
+                  ?>
                 </table>
             </div>
         </div>
