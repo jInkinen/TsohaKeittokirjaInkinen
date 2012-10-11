@@ -4,6 +4,7 @@
     Author     : juhainki
 -->
 <?php
+session_start();
 //Tuodaan tika-yhteyden määritelmät
 include("../TKyhteys.php");
 //Otetaan muistiin ID, jonka perusteella tunnistetaan haluttu resepti.
@@ -30,7 +31,13 @@ $ohje = $tulos["ohje"];
         <div id="raami">
             <div id="sisus">
                 <h1><?php echo $nimi ?></h1>
-                <p><b>Valmistusaika: <?php echo $aika ?></b>
+                <p><b>Valmistusaika:<?php echo $aika ?></b>
+                    <?php
+                    if ($_SESSION["kirjautunut"] == 1) {
+                        echo "<form id=lisaaForm action='../user/lisaakoriin.php' method=post>";
+                        echo "</form>";
+                    }
+                    ?>
                 <table>
                     <tr>
                         <th>Aines</th>

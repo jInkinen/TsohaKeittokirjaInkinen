@@ -5,11 +5,10 @@ Kommentointi
 Kuvien lisäys
 Reseptin tyyppi/laji
 Korista poistaminen
+Koriin lisääminen
 
 ---Korjattava:
 Tyyli pitkien listojen osalta
 Lisää kommentointia sekä virhetarkistuksia
-Estä null nimet resepteille yms
-Ainesten muokkaus
 Ostoslistan tuplien poisto
 
