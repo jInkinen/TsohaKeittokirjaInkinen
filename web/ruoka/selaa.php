@@ -37,9 +37,9 @@
                     } else {
                         $sort2 = $_GET["sort2"];
                     }
-                    $taulu = "ruoka";
                     // Tulostetaan taulukko
                     include ("../taulukko.php");
+                    teeTaulukko("ruoka", $sort, $sort2, "%")
                     ?>
                 </table>
             </div>

@@ -28,8 +28,8 @@ if ($_SESSION["kirjautunut"] != 1) {
         <div id="raami">
             <div id="sisus">
                 <?php
-                $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID='" . $_SESSION["kaytID"] . "'");
-                $kysely->execute();
+                $kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE ID = ?");
+                $kysely->execute(array($_SESSION["kaytID"]));
                 $tulos = $kysely->fetch();
                 ?>
                 <h1>Profiili - <?php echo $tulos["nimi"] . " (ID: " . $tulos["ID"] .")"?></h1>

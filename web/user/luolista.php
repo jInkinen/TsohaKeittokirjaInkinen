@@ -20,18 +20,18 @@ if ($_SESSION["kirjautunut"] != 1) {
                 include("../TKyhteys.php");
 
                 // Valitaan ostoskorin rivit, jotka kuuluvat käyttäjälle
-                $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = '" . $_SESSION["kaytID"] . "'");
-                $kori->execute();
+                $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = ?");
+                $kori->execute(array($_SESSION["kaytID"]));
                 // Luodaan lista, johon ainekset tallennetaan
                 $ainekset = array();
                 // Valitaan aputaulusta rivit, jotka vastaavat valittuja ruokia
                 while ($rivi = $kori->fetch()) {
-                    $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoanainekset WHERE RuokaID='" . $rivi["RuokaID"] . "'");
-                    $ruoka->execute();
+                    $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoanainekset WHERE RuokaID = ?");
+                    $ruoka->execute(array($rivi["RuokaID"]));
                     // Lisätään listaan rivit, jotka löydettiin
                     while ($riviR = $ruoka->fetch()) {
-                        $aines = $TKyhteys->prepare("SELECT nimi FROM aines WHERE ID='" . $riviR["ID"] . "'");
-                        $aines->execute();
+                        $aines = $TKyhteys->prepare("SELECT nimi FROM aines WHERE ID = ?");
+                        $aines->execute(array($riviR["ID"]));
                         $ainesRivi = $aines->fetch();
 
 //                array_search($ainesRivi, $ainekset);

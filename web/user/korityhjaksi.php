@@ -7,8 +7,8 @@ if ($_SESSION["kirjautunut"] != 1) {
 
 include("../TKyhteys.php");
 
-$tyhjennys = $TKyhteys->prepare("DELETE FROM ostoskori WHERE kayttaja = '" . $_SESSION["kaytID"] . "'");
-$tyhjennys->execute();
+$tyhjennys = $TKyhteys->prepare("DELETE FROM ostoskori WHERE kayttaja = ?");
+$tyhjennys->execute(array($_SESSION["kaytID"]));
 
 header("Location: kori.php");
 ?>

@@ -18,8 +18,6 @@ if (!isset($_GET["sort2"])) {
 } else {
     $sort2 = $_GET["sort2"];
 }
-
-$taulu = "aines";
 ?>
 
 <!@page contentType="text/html" pageEncoding="UTF-8">
@@ -44,6 +42,7 @@ $taulu = "aines";
                     </tr>
                     <?php
                     include("../taulukko.php");
+                    teeTaulukko("aines", $sort, $sort2, "%");
                     ?>
                 </table>
             </div>

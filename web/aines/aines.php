@@ -20,8 +20,8 @@
 		$ID = $_GET["id"];
 
                 include("../TKyhteys.php");
-                $kysely = $TKyhteys->prepare("SELECT * FROM aines WHERE ID='" . $ID . "'");
-                $kysely->execute();
+                $kysely = $TKyhteys->prepare("SELECT * FROM aines WHERE ID = ?");
+                $kysely->execute(array($ID));
                 $tulos = $kysely->fetch();
                 $nimi = $tulos["nimi"];
                 $hinta = $tulos["hinta"];

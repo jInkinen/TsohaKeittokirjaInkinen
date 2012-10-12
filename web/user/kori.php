@@ -38,15 +38,11 @@ if ($_SESSION["kirjautunut"] != 1) {
                     <input id="listaksi" type="submit" value="Luo ostoslista">
                 </form>
                 <br>
-
                 <table>
                     <tr>
                         <th>Aines</th>
                         <th>Määrä</th>
-
                     </tr>
-
-
                     <?php
                     $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = ?");
                     $kori->execute(array($_SESSION["kaytID"]));
@@ -65,7 +61,7 @@ if ($_SESSION["kirjautunut"] != 1) {
                         echo "<td>" . $ruoka->fetch() . "</td>";
                         echo "<td>" . $tulos["maara"] . "</td></tr>";
                     }
-                  ?>
+                    ?>
                 </table>
             </div>
         </div>

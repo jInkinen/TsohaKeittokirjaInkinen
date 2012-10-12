@@ -21,23 +21,24 @@
                     <?php
                     $sort = "nimi";
                     $sort2 = "ASC";
-                    $taulu = "ruoka";
+                    $TKtaulu = "ruoka";
                     $arvo = $hakusana;
                     include("taulukko.php");
+                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo);
                     ?>
                 </table>
                 <h3>Ateriat:</h3><br>
                 <table>
                     <?php
-                    $taulu = "ateria";
-                    include("taulukko.php");
+                    $TKtaulu = "ateria";
+                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo);
                     ?>
                 </table>
                 <h3>Ainekset:</h3><br>
                 <table>
                     <?php
-                    $taulu = "aines";
-                    include("taulukko.php");
+                    $TKtaulu = "aines";
+                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo);
                     ?>
                 </table>
             </div>
