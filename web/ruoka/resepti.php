@@ -35,6 +35,9 @@ $ohje = $tulos["ohje"];
                     <?php
                     if ($_SESSION["kirjautunut"] == 1) {
                         echo "<form id=lisaaForm action='../user/lisaakoriin.php' method=post>";
+                        //Säilötään reseptin ID lähetettäväksi
+                        echo "<input name=rID type=hidden value=" . $ID . ">";
+                        echo "<input type=submit value='Lisää ostoskoriin'>";
                         echo "</form>";
                     }
                     ?>

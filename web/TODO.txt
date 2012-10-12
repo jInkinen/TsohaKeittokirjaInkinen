@@ -5,7 +5,7 @@ Kommentointi
 Kuvien lisäys
 Reseptin tyyppi/laji
 Korista poistaminen
-Koriin lisääminen
+
 
 ---Korjattava:
 Tyyli pitkien listojen osalta
