@@ -39,8 +39,9 @@ if (!isset($_GET["sort2"])) {
                     </tr>
                     <?php
                     // Tulostetaan taulukko
+		    include("../TKyhteys.php");
                     include("../taulukko.php");
-                    teeTaulukko("ateria", $sort, $sort2, "%")
+                    teeTaulukko("ateria", $sort, $sort2, "%", $TKyhteys);
                     ?>
                 </table>
             </div>

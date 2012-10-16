@@ -40,8 +40,8 @@ if ($_SESSION["kirjautunut"] != 1) {
                 <br>
                 <table>
                     <tr>
-                        <th>Aines</th>
-                        <th>Määrä</th>
+                        <th>Resepti</th>
+                        <th>Ruokailijat</th>
                     </tr>
                     <?php
                     $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = ?");
@@ -55,11 +55,15 @@ if ($_SESSION["kirjautunut"] != 1) {
                         } else {
                             echo "<tr>";
                         }
-                        $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE ID = ?");
+                        $ruoka = $TKyhteys->prepare("SELECT ID, nimi FROM ruoka WHERE ID = ?");
                         $ruoka->execute(array($rivi["RuokaID"]));
-
-                        echo "<td>" . $ruoka->fetch() . "</td>";
-                        echo "<td>" . $tulos["maara"] . "</td></tr>";
+			$r = $ruoka->fetch();
+                        echo "<td>" . $r["nimi"] . "</td>";
+                        echo "<td>" . $rivi["maara"] . " henkilö(ä)";
+			// Ruokailijoiden määrän muutos
+			echo " | Muuta: <a href=muutamaaraa.php?id=" . $r["ID"]  ."&m=" . ($rivi["maara"] + 1)  . "><b>+1</b></a>";
+			echo " <a href=muutamaaraa.php?id=" . $r["ID"]  ."&m=" . ($rivi["maara"] - 1)  . "><b>-1</b></a>";
+			echo "</td></tr>";
                     }
                     ?>
                 </table>

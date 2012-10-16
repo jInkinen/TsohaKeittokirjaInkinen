@@ -18,7 +18,7 @@ if ($_SESSION["kirjautunut"] != 1) {
                 <?php
                 include("../valikko.php");
                 include("../TKyhteys.php");
-
+/*
                 // Valitaan ostoskorin rivit, jotka kuuluvat käyttäjälle
                 $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = ?");
                 $kori->execute(array($_SESSION["kaytID"]));
@@ -34,8 +34,6 @@ if ($_SESSION["kirjautunut"] != 1) {
                         $aines->execute(array($riviR["ID"]));
                         $ainesRivi = $aines->fetch();
 
-//                array_search($ainesRivi, $ainekset);
-
                         $uusiRivi = [$ainesRivi["nimi"], $riviR["maara"]];
                         $ainekset[] = $uusiRivi;
                     }
@@ -50,7 +48,7 @@ if ($_SESSION["kirjautunut"] != 1) {
                     echo "<td>" . $ainekset[$i][0] . "</td>";
                     echo "<td>" . $ainekset[$i][1] . "</td></tr>";
                 }
-                ?>
+  */              ?>
             </div>
         </div>
     </body>

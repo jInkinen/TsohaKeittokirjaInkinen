@@ -4,6 +4,8 @@
     Author     : juhainki
 -->
 <?php
+session_start();
+
 //Tuodaan tika-yhteyden määritelmät
 include("../TKyhteys.php");
 
@@ -14,8 +16,8 @@ if (!isset($_GET["id"])) {
 $ID = $_GET["id"];
 
 //Haetaan tietokannasta kyseinen tietue
-$kysely = $TKyhteys->prepare("SELECT * FROM ateria WHERE ID=" . $ID);
-$kysely->execute();
+$kysely = $TKyhteys->prepare("SELECT * FROM ateria WHERE ID = ?");
+$kysely->execute(array($ID));
 
 //Tallennetaan noudetut tiedot käyttöä varten muuttujiin
 $tulos = $kysely->fetch();
@@ -42,14 +44,26 @@ $kuvaus = $tulos["kuvaus"];
                 <table>
                     <tr>
                         <th>Aterian osat:</th>
-                        <th><form action="lisaaRuoka.php" method="post">
-                        <?php echo "<input type=hidden name='ID' value=" . $ID . ">"; ?>
-                        <input type="submit" value="Lisää uusi ruoka">
-                    </form></th>
+                        <th>
+				<?php
+				if ($_SESSION["kirjautunut"] == 1) {
+				echo "<form action=lisaaRuoka.php method=post>";
+                        	echo "<input type=hidden name='ID' value=" . $ID . ">";
+                        	echo "<input type=submit value='Lisää uusi ruoka'>";
+                	        echo "</form>";
+				echo "<form action=../user/lisaakoriin.php method=post>";
+				//Kerrotaan piilossa että kyseessä on ateria ja sen ID
+                        	echo "<input type=hidden name='ID' value=" . $ID . ">";
+				echo "<input type=hidden name='tyyppi' value=a>";
+                        	echo "<input type=submit value='Lisää koriin'>";
+				echo "</form>";
+				}
+				?>
+			</th>
                     </tr>
                     <?php
-                    $kysely = $TKyhteys->prepare("SELECT * FROM aterianruoat WHERE AteriaID=" . $ID);
-                    $kysely->execute();
+                    $kysely = $TKyhteys->prepare("SELECT * FROM aterianruoat WHERE AteriaID = ?");
+                    $kysely->execute(array($ID));
                     //Käydään läpi saatu tulos
                     while ($tulos = $kysely->fetch()) {
                         //Käytetään kahta eri tyyliä taulukon luettavuuden vuoksi

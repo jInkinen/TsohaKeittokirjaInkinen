@@ -24,21 +24,22 @@
                     $TKtaulu = "ruoka";
                     $arvo = $hakusana;
                     include("taulukko.php");
-                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo);
+		    include("TKyhteys.php");
+                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
                     ?>
                 </table>
                 <h3>Ateriat:</h3><br>
                 <table>
                     <?php
                     $TKtaulu = "ateria";
-                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo);
+                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
                     ?>
                 </table>
                 <h3>Ainekset:</h3><br>
                 <table>
                     <?php
                     $TKtaulu = "aines";
-                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo);
+                    teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
                     ?>
                 </table>
             </div>

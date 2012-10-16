@@ -35,9 +35,10 @@ $ohje = $tulos["ohje"];
                     <?php
                     if ($_SESSION["kirjautunut"] == 1) {
                         echo "<form id=lisaaForm action='../user/lisaakoriin.php' method=post>";
-                        //Säilötään reseptin ID lähetettäväksi
+                        //Säilötään reseptin ID lähetettäväksi ja kerrotaan että kyseessä on reseptin ID
                         echo "<input name=rID type=hidden value=" . $ID . ">";
-                        echo "<input type=submit value='Lisää ostoskoriin'>";
+       			echo "<input name=tyyppi type=hidden value=r>";
+	                 echo "<input type=submit value='Lisää ostoskoriin'>";
                         echo "</form>";
                     }
                     ?>
@@ -47,21 +48,23 @@ $ohje = $tulos["ohje"];
                         <th>Määrä</th>
                     </tr>
                     <?php
-                    $kysely2 = $TKyhteys->prepare("SELECT * FROM ruoanainekset WHERE ruokaID=" . $ID);
-                    $kysely2->execute();
-                    //Tallennetaan noudetut tiedot käyttöä varten muuttujiin
-                    $tulos2 = $kysely2->fetch();
+                    $ainekset = $TKyhteys->prepare("SELECT * FROM ruoanainekset WHERE RuokaID = ?");
+                    $ainekset->execute(array($ID));
+			//luodaan taulukko
                     $i = 0;
-                    while ($tulos2 = $kysely->fetch()) {
-                        $i++;
+                    while ($aines = $ainekset->fetch()) {
+                       $akys = $TKyhteys->prepare("SELECT * FROM aines WHERE ID = ?");
+			$akys->execute(array($aines["AinesID"]));
+			$animi = $akys->fetch();
+
+			 $i++;
                         if ($i % 2 != 0) {
                             echo "<tr class=alt>";
                         } else {
                             echo "<tr>";
                         }
-                        echo "<td>" . $tulos["ID"] . "</td>";
-                        echo "<td><a href=resepti.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
-                        echo "<td>" . $tulos["aika"] . "</td></tr>";
+                        echo "<td><a href=../aines/aines.php?id=" . $aines["AinesID"] . ">" . $animi["nimi"] . "</a></td>";
+                        echo "<td>" . $aines["maara"] . "</td></tr>";
                     }
                     ?>
                 </table>
