@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if ($_SESSION["kirjautunut"] != 1) {
@@ -14,12 +15,12 @@ $rnimi = $_POST["ruokaID"];
 if (!isset($aines) || !isset($maara) || !isset($rnimi) || !isset($yksikko)) {
     die("Vaadittuja arvoja ei lähetetty sivulle. Tulitko sivulle oikeaa reittiä?");
 }
-if (count($aines) < 1) {
-    die("Liian vähän aineksia.");
+
+if (count($aines) < 0) {
+    die("Ainesten määrä ei voi olla negatiivinen.");
 }
 
 include("../TKyhteys.php");
-
 
 for ($i = 0; $i < count($aines); $i++) {
     // Ei lisätä tyhjiä rivejä turhaan.

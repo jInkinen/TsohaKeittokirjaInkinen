@@ -60,9 +60,10 @@ if ($_SESSION["kirjautunut"] != 1) {
                         $r = $ruoka->fetch();
                         echo "<td>" . $r["nimi"] . "</td>";
                         echo "<td>" . $rivi["maara"] . " henkilö(ä)";
-                        // Ruokailijoiden määrän muutos
+                        // Ruokailijoiden määrän muutos muutamaaraa sivun avulla (param m arvolla 0 poistaa)
                         echo " | Muuta: <a href=muutamaaraa.php?id=" . $r["ID"] . "&m=" . ($rivi["maara"] + 1) . "><b>+1</b></a>";
                         echo " <a href=muutamaaraa.php?id=" . $r["ID"] . "&m=" . ($rivi["maara"] - 1) . "><b>-1</b></a>";
+                        echo " <a href=muutamaaraa.php?id=" . $r["ID"] . "&m=0><b>X</b></a>";
                         echo "</td></tr>";
                     }
                     ?>

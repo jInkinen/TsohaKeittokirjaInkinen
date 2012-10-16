@@ -31,6 +31,9 @@ $ohje = $tulos["ohje"];
         <div id="raami">
             <div id="sisus">
                 <h1><?php echo $nimi ?></h1>
+                <?php
+                include("kuva.php?id=" . $ID);
+                ?>
                 <p><b>Valmistusaika:<?php echo $aika ?></b>
                     <?php
                     if ($_SESSION["kirjautunut"] == 1) {
@@ -71,7 +74,7 @@ $ohje = $tulos["ohje"];
                 </p>
                 <p><b>Valmistusohje:</b><br><?php echo $ohje ?></p>
                 <p>
-                <table><b>Kommentit</b>
+                <table><b>Kommentit [TODO]</b>
                     <tr>
                         <td>[Kommentoijan nimi]</td>
                         <td>[Kommentti]</td>

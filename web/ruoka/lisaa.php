@@ -37,24 +37,24 @@ if ($_SESSION["kirjautunut"] != 1) {
                         <tr>
                             <td>Tyyppi:</td>
                             <td>
-                                <select>
+                                <select name="tyyppi">
                                     <option value="">(Ei valittu)</option>
-                                    <option value="alku">Alkuruoka</option>
-                                    <option value="paa">Pääruoka</option>
-                                    <option value="jalki">Jälkiruoka</option>
-                                    <option value="juoma">Juoma</option>
+                                    <option value="Alkuruoka">Alkuruoka</option>
+                                    <option value="Pääruoka">Pääruoka</option>
+                                    <option value="Jälkiruoka">Jälkiruoka</option>
+                                    <option value="Juoma">Juoma</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Laji:</td>
                             <td>
-                                <select>
+                                <select name="laji">
                                     <option value="">(Ei valittu)</option>
-                                    <option value="liha">Liha</option>
-                                    <option value="kala">Kala</option>
-                                    <option value="kasvis">Kasvis</option>
-                                    <option value="kana">Broileri</option>
+                                    <option value="Liha">Liha</option>
+                                    <option value="Kala">Kala</option>
+                                    <option value="Kasvis">Kasvis</option>
+                                    <option value="Kana">Broileri</option>
                                 </select>
                             </td>
                         </tr>
@@ -71,8 +71,8 @@ if ($_SESSION["kirjautunut"] != 1) {
                             </td>
                         </tr>
                         <tr>
-                                <td>Kuva: [TODO]</td>
-                                <td><input id="kuva" type="file"></td>
+                                <td>Kuva: [WIP]</td>
+                                <td><input name="kuva" accept="image/jpeg" type="file"></td>
                         </tr>
                 </table><br>
                 <input id="lisaa" type="submit" value="Lähetä">

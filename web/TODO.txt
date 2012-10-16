@@ -9,3 +9,5 @@ Tyyli pitkien listojen osalta
 Ostoslistan tuplien poisto
 Tietokannan rakenne, laadukasta esimerkkidataa ja turhat testirivit pois
 Lisättäessä uusia rivejä, olisi hyvä tarkistaa ettei tule turhia tuplia
+Hakutulokseen mukaan myös osittain vastaavat tulokset
+Hakutulokseen mukaan myös ruokatyypit-taulun tiedot

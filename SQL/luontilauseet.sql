@@ -72,7 +72,7 @@ CREATE TABLE ruokaTyypit
 
 CREATE TABLE kommentti
 (
-	ID bigint NOT NULL PRIMARY KEY,
+	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	teksti nvarchar(1000),
 	pvm smalldatetime NOT NULL,
 	FOREIGN KEY (Kommentoija) REFERENCES kayttaja(ID)
@@ -80,7 +80,8 @@ CREATE TABLE kommentti
 
 CREATE TABLE kuvat
 (
-	ID bigint NOT NULL PRIMARY KEY,
+	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	RuokaID bigint(20),
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
-	polku varchar(100)
+	kuva blob NOT NULL
 );
