@@ -1,14 +1,11 @@
 ---Lisättävä:
-
 Reseptin/aterian muokkaus
 Kommentointi
 Kuvien lisäys
-Reseptin tyyppi/laji
-Korista poistaminen
-
+Ruoan tyypin tallennus
 
 ---Korjattava:
 Tyyli pitkien listojen osalta
-Lisää kommentointia sekä virhetarkistuksia
 Ostoslistan tuplien poisto
-
+Tietokannan rakenne, laadukasta esimerkkidataa ja turhat testirivit pois
+Lisättäessä uusia rivejä, olisi hyvä tarkistaa ettei tule turhia tuplia

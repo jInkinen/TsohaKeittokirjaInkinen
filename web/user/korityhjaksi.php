@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if ($_SESSION["kirjautunut"] != 1) {
     header("Location: ../error.php");

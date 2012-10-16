@@ -1,4 +1,5 @@
 <?php
+
 // Varmistetaan, että käyttäjä on kirjautunut
 session_start();
 if ($_SESSION["kirjautunut"] != 1) {
@@ -7,7 +8,7 @@ if ($_SESSION["kirjautunut"] != 1) {
 }
 
 if (!isset($_GET["id"]) || !isset($_GET["m"])) {
-	die("muuta määrää: tarvittuja parametrejä ei annettu");
+    die("muuta määrää: tarvittuja parametrejä ei annettu");
 }
 
 $maara = $_GET["m"];
@@ -17,11 +18,11 @@ include("../TKyhteys.php");
 
 // Poistetaan rivi, jos ruokailijoiden määrä on nolla
 if ($maara == 0) {
-	$poisto = $TKyhteys->prepare("DELETE FROM ostoskori WHERE ( kayttaja = ? AND RuokaID = ? ) LIMIT 1");
-	$poisto->execute(array($_SESSION["kaytID"], $ID));
+    $poisto = $TKyhteys->prepare("DELETE FROM ostoskori WHERE ( kayttaja = ? AND RuokaID = ? ) LIMIT 1");
+    $poisto->execute(array($_SESSION["kaytID"], $ID));
 
-	header("Location: kori.php");
-	exit();
+    header("Location: kori.php");
+    exit();
 }
 
 $muutos = $TKyhteys->prepare("UPDATE ostoskori SET maara = ? WHERE ( kayttaja = ? AND RuokaID = ? ) LIMIT 1");

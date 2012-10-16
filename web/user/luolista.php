@@ -9,21 +9,26 @@ if ($_SESSION["kirjautunut"] != 1) {
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <title>Keittokirja Online - Ostoslista</title>
+        <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <body>
+        <?php
+        include("../valikko.php");
+        ?>
         <div id="raami">
             <div id="sisus">
                 <h1>Ostoslista</h1>
                 <?php
-                include("../valikko.php");
                 include("../TKyhteys.php");
-/*
+
                 // Valitaan ostoskorin rivit, jotka kuuluvat käyttäjälle
                 $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = ?");
                 $kori->execute(array($_SESSION["kaytID"]));
+
                 // Luodaan lista, johon ainekset tallennetaan
-                $ainekset = array();
+                $ainekset = [];
+
                 // Valitaan aputaulusta rivit, jotka vastaavat valittuja ruokia
                 while ($rivi = $kori->fetch()) {
                     $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoanainekset WHERE RuokaID = ?");
@@ -35,11 +40,18 @@ if ($_SESSION["kirjautunut"] != 1) {
                         $ainesRivi = $aines->fetch();
 
                         $uusiRivi = [$ainesRivi["nimi"], $riviR["maara"]];
-                        $ainekset[] = $uusiRivi;
+                        $ainekset[] = $uusiRivi[];
                     }
                 }
-
-                for ($i = 0; $i <= count($ainekset); $i++) {
+                // Järjestetään lista
+                array_multisort($ainekset);
+                // Käsitellään toistuvat tuotteet (yhdistetään ne)
+                $lopputulos = [];
+                for ($a = 0; $a <= count($ainekset); $a++) {
+                    $lopputulos[] = $a[];
+                }
+                
+                for ($i = 0; $i <= count($lopputulos); $i++) {
                     if ($i % 2 != 0) {
                         echo "<tr class=alt>";
                     } else {
@@ -48,7 +60,7 @@ if ($_SESSION["kirjautunut"] != 1) {
                     echo "<td>" . $ainekset[$i][0] . "</td>";
                     echo "<td>" . $ainekset[$i][1] . "</td></tr>";
                 }
-  */              ?>
+                ?>
             </div>
         </div>
     </body>

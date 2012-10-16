@@ -45,19 +45,29 @@ CREATE TABLE aterianruoat
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 );
 
-CREATE TABLE kuvat
+CREATE TABLE ostoskori
 (
-	ID bigint NOT NULL PRIMARY KEY,
+	kayttaja bigint,
+	RuokaID bigint,
+	FOREIGN KEY (kayttaja) REFERENCES kayttaja(ID),
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
-	polku nvarchar(100)
+	maara int
+);
+
+CREATE TABLE kayttaja
+(
+	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nimi varchar(100) NOT NULL,
+	salasana varchar(255) NOT NULL,
+	oikeudet int
 );
 
 CREATE TABLE ruokaTyypit
 (
-	RuokaID bigint,
+	RuokaID bigint(20) NOT NULL,
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
-	tyyppi nvarchar(20),
-	laji nvarchar(20)
+	tyyppi varchar(20),
+	laji varchar(20)
 );
 
 CREATE TABLE kommentti
@@ -68,19 +78,9 @@ CREATE TABLE kommentti
 	FOREIGN KEY (Kommentoija) REFERENCES kayttaja(ID)
 );
 
-CREATE TABLE kayttaja
+CREATE TABLE kuvat
 (
-	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	nimi nvarchar(100) NOT NULL,
-	salasana nvarchar(255) NOT NULL,
-	oikeudet int
-);
-
-CREATE TABLE ostoskori
-(
-	kayttaja bigint,
-	RuokaID bigint,
-	FOREIGN KEY (kayttaja) REFERENCES kayttaja(ID),
+	ID bigint NOT NULL PRIMARY KEY,
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
-	maara int
+	polku varchar(100)
 );

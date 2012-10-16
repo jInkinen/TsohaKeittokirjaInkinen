@@ -63,7 +63,7 @@ $ohje = $tulos["ohje"];
                         } else {
                             echo "<tr>";
                         }
-                        echo "<td><a href=../aines/aines.php?id=" . $aines["AinesID"] . ">" . $animi["nimi"] . "</a></td>";
+                        echo "<td><a href=../aines/aines.php?id=" . $aines["AinesID"] . ">" . $animi["nimi"] . " " . $aines["maara"] . "</a></td>";
                         echo "<td>" . $aines["maara"] . "</td></tr>";
                     }
                     ?>

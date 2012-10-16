@@ -1,4 +1,5 @@
 <?php
+
 /* author: juhainki
  * Kirjautumisen / rekisteröitymisen hallinta.
  */
@@ -38,7 +39,6 @@ if ($maara == 1) { //Käyttäjä olemassa - Yritetään kirjautua sisään
     } else {
         die("Tili on jo luotu samalla nimellä. Annoitko oikean salasanan?");
     }
-    
 }
 if ($maara == 0) { //Käyttäjää ei ole, luodaan se.
     $insert = $TKyhteys->prepare("INSERT INTO kayttaja (nimi, salasana, oikeudet) VALUES (?, ?, ?)");

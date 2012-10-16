@@ -57,13 +57,13 @@ if ($_SESSION["kirjautunut"] != 1) {
                         }
                         $ruoka = $TKyhteys->prepare("SELECT ID, nimi FROM ruoka WHERE ID = ?");
                         $ruoka->execute(array($rivi["RuokaID"]));
-			$r = $ruoka->fetch();
+                        $r = $ruoka->fetch();
                         echo "<td>" . $r["nimi"] . "</td>";
                         echo "<td>" . $rivi["maara"] . " henkilö(ä)";
-			// Ruokailijoiden määrän muutos
-			echo " | Muuta: <a href=muutamaaraa.php?id=" . $r["ID"]  ."&m=" . ($rivi["maara"] + 1)  . "><b>+1</b></a>";
-			echo " <a href=muutamaaraa.php?id=" . $r["ID"]  ."&m=" . ($rivi["maara"] - 1)  . "><b>-1</b></a>";
-			echo "</td></tr>";
+                        // Ruokailijoiden määrän muutos
+                        echo " | Muuta: <a href=muutamaaraa.php?id=" . $r["ID"] . "&m=" . ($rivi["maara"] + 1) . "><b>+1</b></a>";
+                        echo " <a href=muutamaaraa.php?id=" . $r["ID"] . "&m=" . ($rivi["maara"] - 1) . "><b>-1</b></a>";
+                        echo "</td></tr>";
                     }
                     ?>
                 </table>
