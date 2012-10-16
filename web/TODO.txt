@@ -1,8 +1,10 @@
 ---Lisättävä:
 Reseptin/aterian muokkaus
 Kommentointi
+Kommenttien tulostaminen reseptisivulle
 Kuvien lisäys
 Ruoan tyypin tallennus
+Käyttäjän poisti (poista myös kommentit)
 
 ---Korjattava:
 Tyyli pitkien listojen osalta

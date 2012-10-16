@@ -70,12 +70,15 @@ CREATE TABLE ruokaTyypit
 	laji varchar(20)
 );
 
-CREATE TABLE kommentti
+CREATE TABLE kommentit
 (
 	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	teksti nvarchar(1000),
-	pvm smalldatetime NOT NULL,
-	FOREIGN KEY (Kommentoija) REFERENCES kayttaja(ID)
+	kayttaja bigint,
+	RuokaID bigint(20),
+	teksti varchar(1000),
+	pvm TIMESTAMP NOT NULL,
+	FOREIGN KEY (kayttaja) REFERENCES kayttaja(ID),
+	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 );
 
 CREATE TABLE kuvat

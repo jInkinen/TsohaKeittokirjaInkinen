@@ -40,8 +40,8 @@ $ohje = $tulos["ohje"];
                         echo "<form id=lisaaForm action='../user/lisaakoriin.php' method=post>";
                         //Säilötään reseptin ID lähetettäväksi ja kerrotaan että kyseessä on reseptin ID
                         echo "<input name=rID type=hidden value=" . $ID . ">";
-       			echo "<input name=tyyppi type=hidden value=r>";
-	                 echo "<input type=submit value='Lisää ostoskoriin'>";
+                        echo "<input name=tyyppi type=hidden value=r>";
+                        echo "<input type=submit value='Lisää ostoskoriin'>";
                         echo "</form>";
                     }
                     ?>
@@ -53,14 +53,14 @@ $ohje = $tulos["ohje"];
                     <?php
                     $ainekset = $TKyhteys->prepare("SELECT * FROM ruoanainekset WHERE RuokaID = ?");
                     $ainekset->execute(array($ID));
-			//luodaan taulukko
+                    //luodaan taulukko
                     $i = 0;
                     while ($aines = $ainekset->fetch()) {
-                       $akys = $TKyhteys->prepare("SELECT * FROM aines WHERE ID = ?");
-			$akys->execute(array($aines["AinesID"]));
-			$animi = $akys->fetch();
+                        $akys = $TKyhteys->prepare("SELECT * FROM aines WHERE ID = ?");
+                        $akys->execute(array($aines["AinesID"]));
+                        $animi = $akys->fetch();
 
-			 $i++;
+                        $i++;
                         if ($i % 2 != 0) {
                             echo "<tr class=alt>";
                         } else {
@@ -74,7 +74,17 @@ $ohje = $tulos["ohje"];
                 </p>
                 <p><b>Valmistusohje:</b><br><?php echo $ohje ?></p>
                 <p>
-                <table><b>Kommentit [TODO]</b>
+                    <?php
+                    if ($_SESSION["kirjautunut"] == 1) {
+                        echo "Kommentoi:<br><form id=lisaaForm action='lisaakommentti.php' method=post>";
+                        //Säilötään reseptin ID lähetettäväksi
+                        echo "<input name=ID type=hidden value=" . $ID . ">";
+                        echo "<textarea name=teksti rows=5 cols=50>Kommentti</TEXTAREA>";
+                        echo "<input type=submit value='Lähetä kommentti'>";
+                        echo "</form>";
+                    }
+                    ?>
+                <table><b>Kommentit [WIP]</b>
                     <tr>
                         <td>[Kommentoijan nimi]</td>
                         <td>[Kommentti]</td>
