@@ -18,7 +18,7 @@ include("../TKyhteys.php");
 //Tarkistetaan onko samalla nimellä jo olemasa ateria
 $kysely = $TKyhteys->prepare("SELECT nimi FROM ateria WHERE nimi = ?");
 $kysely->execute(array($nimi));
-$maara = $kysely->fetchAll;
+$maara = $kysely->fetchAll();
 
 if (count($maara) > 0) {
     die("Annetulla nimellä on jo olemassa ateria.");

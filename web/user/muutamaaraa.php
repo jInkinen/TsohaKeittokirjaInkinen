@@ -17,7 +17,7 @@ $ID = $_GET["id"];
 include("../TKyhteys.php");
 
 // Poistetaan rivi, jos ruokailijoiden määrä on nolla
-if ($maara == 0) {
+if ($maara <= 0) {
     $poisto = $TKyhteys->prepare("DELETE FROM ostoskori WHERE ( kayttaja = ? AND RuokaID = ? ) LIMIT 1");
     $poisto->execute(array($_SESSION["kaytID"], $ID));
 

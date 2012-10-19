@@ -26,21 +26,23 @@ if (!isset($_POST["maara"])) {
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <script language="javascript">
-        function lisaaUusiAines() {
-            lisaaUusiKentta("aines[]");
-            lisaaUusiKentta("maara[]");
-            lisaaUusiKentta("yksikko[]");
+	function testi() {
+		alert("testi");
+	}
+        function lisaaUusiAines(lomake) {
+            lisaaUusiKentta(lomake, "aines[]");
+            lisaaUusiKentta(lomake, "maara[]");
+            lisaaUusiKentta(lomake, "yksikko[]");
         }
-        function lisaaUusiKentta(nimi) {
-            //Luodaan uusi olio
-            var boksi = document.createElement("input");
-            //Lisätään oliolle arvot
-            boksi.setAttribute("type", text);
-            boksi.setAttribute("name", nimi);
-            //Selvitetään mihin uusi kenttä lisätään
-            var lomake = document.getElementById("ainekset");
-            //Lisätään lomakkeeseen uusi elementti
-            lomake.appendChild(boksi);
+        function lisaaUusiKentta(lomake, nimi) {
+		var kentta = document.createElement("input");
+
+		kentta.setAttribute("type", "text");
+		kentta.setAttribute("name", nimi);
+		kentta.setAttribute("value", "");
+		kentta.setAttribute("size", "15");
+
+		lomake.parentNode.appendChild(kentta);
         }
     </script>
     <body>
@@ -56,7 +58,7 @@ if (!isset($_POST["maara"])) {
                         </tr>
                         <tr>
                             <td>Valmistusaika</td>
-                            <td><input name="aika" type="number" min="0"> minuuttia</td>
+                            <td><input name="aika" type="number" min="0" value="0"> minuuttia</td>
                         </tr>
                         <tr>
                             <td>Tyyppi:</td>
@@ -91,14 +93,11 @@ if (!isset($_POST["maara"])) {
                                 Ainekset:
                             </td>
                             <td>
-                                <input type="button" onclick="add()" value="Uusi aines">
+                                <button type="button" onclick="lisaaUusiAines(this)">Uusi aines</button><br>
                             </td>
                         </tr>
-                        <tr id="ainekset">
-                            
-                        </tr>
-                        <tr>
-                                <td>Kuva: [WIP]</td>
+			<tr>
+                                <td>Kuva:</td>
                                 <td><input name="kuva" accept="image/jpeg" type="file"></td>
                         </tr>
                 </table><br>

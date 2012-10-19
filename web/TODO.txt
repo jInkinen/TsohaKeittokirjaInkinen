@@ -1,15 +1,8 @@
----Lisättävä:
-Reseptin/aterian muokkaus
-Käyttäjän poisto (poista myös kommentit)
-
 ---Korjattava:
-?Tyyli pitkien listojen osalta
-?Hakutulokseen mukaan myös osittain vastaavat tulokset
-Ostoslistan tuplien poisto
-Hakutulokseen mukaan myös ruokatyypit-taulun tiedot
+hakutulokseen ruoan nimi tyyppi/laji kohtaan
+Salli desimaalipilkut aineksen määrässä
 
-Aines taulun uusinta...
+Aines taulun uusinta???
 SQL: rakenteeseen taulut jokaista tyyppiä kohden hinnalle ja ravinnolle (kg, l, kpl)
 SQL: ruoanaineksiin yksikko tallennettavaksi
-Salli desimaalipilkut aineksen määrässä
-Muuta ainesten lisäyksen yksikkö pudotusvalikosta valittavaksi
+Muuta ainesten lisäyksen yksikkö pudotusvalikosta valittavaksi?

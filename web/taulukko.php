@@ -8,16 +8,24 @@
 
 function teeTaulukko($taulu, $sort, $sort2, $arvo, $TKyhteys) {
 //Parametrien käsittely
-    if (!isset($taulu) || !isset($sort) || !isset($sort2)) {
+    if (!isset($taulu) || !isset($sort) || !isset($sort2) || !isset($taulu)) {
         die("Parametrivirhe.");
     }
     if (!isset($arvo)) {
         $arvo = "%";
     }
+    if ($taulu == "kayttaja") {
+	die("Luvaton taulun nimi.");
+    }
+
 //Valmistellaan kysely ja suoritetaan se
 
-    $kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu . " WHERE ? LIKE ? ORDER BY ? ?");
-    $kysely->execute(array($sort, '%'.$arvo.'%', $sort, $sort2));
+//    $kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu . " WHERE ? LIKE ? ORDER BY ? ?");
+//    $kysely->execute(array($sort, $arvo, $sort, $sort2));
+
+    $kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu ." WHERE " . $sort . " LIKE '%" . $arvo . "%' ORDER BY ". $sort ." " . $sort2);
+    $kysely->execute();
+
 //Kirjoitetaan tulokset sivulle
     $i = 0;
     while ($tulos = $kysely->fetch()) {
@@ -42,7 +50,9 @@ function teeTaulukko($taulu, $sort, $sort2, $arvo, $TKyhteys) {
         } else if ($taulu == "ateria") {
             echo "<td>" . $tulos["ID"] . "</td>";
             echo "<td><a href=/tsoha/ateria/ateria.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td></tr>";
-        } else {
+        } else if ($taulu == "ruokatyypit") {
+            echo "<td><a href=/tsoha/ruoka/resepti.php?id=" . $tulos["RuokaID"] . ">". $tulos["tyyppi"] . " / ". $tulos["laji"] ."</a></td>";
+	} else {
             echo "virhe";
             die("taulukko.php: Tuntematon taulu annettu. Palaa edelliselle sivulle ja kokeile uudestaan.");
         }
