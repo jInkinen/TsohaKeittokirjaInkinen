@@ -1,12 +1,17 @@
 ---Lisättävä:
 Reseptin/aterian muokkaus
-Ruoan tyypin tallennus??
 Käyttäjän poisto (poista myös kommentit)
 
 ---Korjattava:
 Tyyli pitkien listojen osalta
 Ostoslistan tuplien poisto
-Tietokannan rakenne, laadukasta esimerkkidataa ja turhat testirivit pois
-Lisättäessä uusia rivejä, olisi hyvä tarkistaa ettei tule turhia tuplia
 Hakutulokseen mukaan myös osittain vastaavat tulokset
 Hakutulokseen mukaan myös ruokatyypit-taulun tiedot
+Tarkista onko samalla nimellä jo ruoka/ateria ennen lisäystä
+Aineksen lisäykseen tarkistus onko samalla nimellä
+
+Aines taulukon uusinta...
+SQL: rakenteeseen taulut jokaista tyyppiä kohden hinnalle ja ravinnolle (kg, l, kpl)
+SQL: ruoanaineksiin yksikko tallennettavaksi
+Salli desimaalipilkut aineksen määrässä
+Muuta ainesten lisäyksen yksikkö pudotusvalikosta valittavaksi

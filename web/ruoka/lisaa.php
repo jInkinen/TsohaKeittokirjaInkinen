@@ -10,6 +10,12 @@ if ($_SESSION["kirjautunut"] != 1) {
     header("Location: ../error.php");
     exit();
 }
+
+if (!isset($_POST["maara"])) {
+    $maara = 0;
+} else {
+    $maara = $_POST["maara"];
+}
 ?>
 <!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
@@ -19,6 +25,24 @@ if ($_SESSION["kirjautunut"] != 1) {
         <title>Keittokirja Online - Resepti - Lisää</title>
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
+    <script language="javascript">
+        function lisaaUusiAines() {
+            lisaaUusiKentta("aines[]");
+            lisaaUusiKentta("maara[]");
+            lisaaUusiKentta("yksikko[]");
+        }
+        function lisaaUusiKentta(nimi) {
+            //Luodaan uusi olio
+            var boksi = document.createElement("input");
+            //Lisätään oliolle arvot
+            boksi.setAttribute("type", text);
+            boksi.setAttribute("name", nimi);
+            //Selvitetään mihin uusi kenttä lisätään
+            var lomake = document.getElementById("ainekset");
+            //Lisätään lomakkeeseen uusi elementti
+            lomake.appendChild(boksi);
+        }
+    </script>
     <body>
         <?php include("../valikko.php"); ?>
         <div id="raami">
@@ -64,11 +88,14 @@ if ($_SESSION["kirjautunut"] != 1) {
 			</tr>
                         <tr>
                             <td>
-                                Ainesten lukumäärä:
+                                Ainekset:
                             </td>
                             <td>
-                                <input name="ainekset" type="number" min="0">
+                                <input type="button" onclick="add()" value="Uusi aines">
                             </td>
+                        </tr>
+                        <tr id="ainekset">
+                            
                         </tr>
                         <tr>
                                 <td>Kuva: [WIP]</td>

@@ -1,5 +1,6 @@
 <?php
-
+die("TURHA LOMAKE");
+/*
 session_start();
 
 if ($_SESSION["kirjautunut"] != 1) {
@@ -44,4 +45,5 @@ for ($i = 0; $i < count($aines); $i++) {
 }
 
 header("Location: resepti.php?id=" . $rID[0]);
+ */
 ?>

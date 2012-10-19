@@ -3,8 +3,7 @@ CREATE TABLE ruoka
 	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nimi varchar(100),
 	aika int(11),
-	ohje text,
-	poisto tinyint(1)
+	ohje text
 );
 
 CREATE TABLE aines
@@ -14,7 +13,6 @@ CREATE TABLE aines
 	hinta double,
 	ravinto double,
 	yksikko varchar(10)
-	poisto tinyint(1)
 );
 
 CREATE TABLE ateria
@@ -22,7 +20,6 @@ CREATE TABLE ateria
 	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nimi varchar(100),
 	kuvaus varchar(300)
-	poisto tinyint(1)
 );
 
 CREATE TABLE ruoanainekset
@@ -30,7 +27,8 @@ CREATE TABLE ruoanainekset
 	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	RuokaID bigint(20),
 	AinesID bigint(20),
-	maara int,
+	maara double,
+	yksikko tinyint,
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
 	FOREIGN KEY (AinesID) REFERENCES aines(ID)
 );
@@ -40,7 +38,6 @@ CREATE TABLE aterianruoat
 	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	AteriaID bigint,
 	RuokaID bigint,
-	maara int,
 	FOREIGN KEY (AteriaID) REFERENCES ateria(ID),
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 );
@@ -49,9 +46,9 @@ CREATE TABLE ostoskori
 (
 	kayttaja bigint,
 	RuokaID bigint,
+	maara int,
 	FOREIGN KEY (kayttaja) REFERENCES kayttaja(ID),
-	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
-	maara int
+	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 );
 
 CREATE TABLE kayttaja
@@ -65,9 +62,9 @@ CREATE TABLE kayttaja
 CREATE TABLE ruokatyypit
 (
 	RuokaID bigint(20) NOT NULL,
-	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
 	tyyppi varchar(20),
-	laji varchar(20)
+	laji varchar(20),
+	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID)
 );
 
 CREATE TABLE kommentit
