@@ -33,8 +33,8 @@ function teeTaulukko($taulu, $sort, $sort2, $arvo, $TKyhteys) {
         if ($taulu == "aines") {
             echo "<td>" . $tulos["ID"] . "</td>";
             echo "<td><a href=/tsoha/aines/aines.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
-            echo "<td>" . $tulos["hinta"] . "/" . $tulos["yksikko"] . "</td>";
-            echo "<td>" . $tulos["ravinto"] . "/" . $tulos["yksikko"] . "</td></tr>";
+            echo "<td>" . $tulos["hinta"] . " €/" . $tulos["yksikko"] . "</td>";
+            echo "<td>" . $tulos["ravinto"] . " kcal/" . $tulos["yksikko"] . "</td></tr>";
         } else if ($taulu == "ruoka") {
             echo "<td>" . $tulos["ID"] . "</td>";
             echo "<td><a href=/tsoha/ruoka/resepti.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td>";
