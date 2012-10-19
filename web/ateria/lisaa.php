@@ -35,11 +35,6 @@ if ($_SESSION["kirjautunut"] != 1) {
                             <td>Aterian kuvaus:</td>
                             <td><input name="kuvaus" type="text"></td>
                         </tr>
-                        <tr><td><br></td></tr>
-                        <tr>
-                            <td>Kuva: [TODO]</td>
-                            <td><input name="kuva" type="file"></td>
-                        </tr>
                     </table><br>
                     <input id="lisaa" type="submit" value="Lisää">
                 </form>

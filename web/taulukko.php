@@ -17,7 +17,7 @@ function teeTaulukko($taulu, $sort, $sort2, $arvo, $TKyhteys) {
 //Valmistellaan kysely ja suoritetaan se
 
     $kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu . " WHERE ? LIKE ? ORDER BY ? ?");
-    $kysely->execute(array($sort, "%".$arvo."%", $sort, $sort2));
+    $kysely->execute(array($sort, '%'.$arvo.'%', $sort, $sort2));
 //Kirjoitetaan tulokset sivulle
     $i = 0;
     while ($tulos = $kysely->fetch()) {

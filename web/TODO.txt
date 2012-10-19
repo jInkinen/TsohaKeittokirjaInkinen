@@ -3,14 +3,12 @@ Reseptin/aterian muokkaus
 Käyttäjän poisto (poista myös kommentit)
 
 ---Korjattava:
-Tyyli pitkien listojen osalta
+?Tyyli pitkien listojen osalta
+?Hakutulokseen mukaan myös osittain vastaavat tulokset
 Ostoslistan tuplien poisto
-Hakutulokseen mukaan myös osittain vastaavat tulokset
 Hakutulokseen mukaan myös ruokatyypit-taulun tiedot
-Tarkista onko samalla nimellä jo ruoka/ateria ennen lisäystä
-Aineksen lisäykseen tarkistus onko samalla nimellä
 
-Aines taulukon uusinta...
+Aines taulun uusinta...
 SQL: rakenteeseen taulut jokaista tyyppiä kohden hinnalle ja ravinnolle (kg, l, kpl)
 SQL: ruoanaineksiin yksikko tallennettavaksi
 Salli desimaalipilkut aineksen määrässä

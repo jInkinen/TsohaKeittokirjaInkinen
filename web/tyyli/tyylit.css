@@ -97,6 +97,7 @@ a:active {
 #sisus {
     padding: 50px;
     height: 900px;
+    clear: both;
 }
 
 table {

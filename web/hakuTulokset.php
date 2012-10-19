@@ -24,7 +24,7 @@
                     $TKtaulu = "ruoka";
                     $arvo = $hakusana;
                     include("taulukko.php");
-		    include("TKyhteys.php");
+                    include("TKyhteys.php");
                     teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
                     ?>
                 </table>
@@ -40,6 +40,13 @@
                     <?php
                     $TKtaulu = "aines";
                     teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
+                    ?>
+                </table>
+                <h3>Tyyppi / Laji:</h3><br>
+                <table>
+                    <?php
+                    $tyypit = $TKyhteys->prepare("SELECT * FROM ruokatyypit WHERE laji LIKE ? OR tyyppi LIKE ? ");
+                    $tyypit->execute(array('%' . $arvo . '%', '%' . $arvo . '%'));
                     ?>
                 </table>
             </div>

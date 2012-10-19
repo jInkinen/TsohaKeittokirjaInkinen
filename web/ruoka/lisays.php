@@ -1,4 +1,5 @@
 <?php
+
 /*
  * lisäys.php:n tehtävä on tallentaa uusi ruoka tietokantaan,
  * sekä lisätä sitä vastaavat ainekset yms oheistiedot omiin
@@ -29,9 +30,17 @@ if ($nimi == "") {
     die("Reseptin nimeä ei annettu.");
 }
 
-// Lisätään ruoka omaan tauluunsa
-$insert = $TKyhteys->prepare("INSERT INTO ruoka (nimi, aika, ohje) VALUES (?, ?, ?)");
-$insert->execute(array($nimi, $aika, $ohje));
+$ruokaKysely = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE nimi = ?");
+$ruokaKysely->execute(array($nimi));
+$ruoka = $ruokaKysely->fetchAll;
+
+if (count($ruoka) > 0) {
+    die("Annetulla nimellä on jo olemassa resepti.");
+} else {
+    // Lisätään ruoka omaan tauluunsa
+    $insert = $TKyhteys->prepare("INSERT INTO ruoka (nimi, aika, ohje) VALUES (?, ?, ?)");
+    $insert->execute(array($nimi, $aika, $ohje));
+}
 
 /*
  * Haetaan juuri luodulle ruokariville annettu ID
@@ -74,24 +83,24 @@ for ($i = 0; $i < count($aines); $i++) {
     $ainesKysely = $TKyhteys->prepare("SELECT nimi, ID FROM aines WHERE nimi = ?");
     $ainesKysely->execute(array($aines[$i]));
     $ainekset = $ainesKysely->fetchAll;
-    
+
     if (count($ainekset) > 0) {
         $lisaaRuoanAinekset = $TKyhteys->prepare("INSERT INTO ruoanainekset (RuokaID, AinesID, maara) VALUES (?, ?, ?)");
         $lisaaRuoanAinekset->execute(array($RuokaID, $ainekset["ID"], $maara[$i]));
         continue;
     }
-    
-    
+
+
     //Uuden aineksen lisäys
     $ainesLis = $TKyhteys->prepare("INSERT INTO aines (nimi, yksikko) VALUES (?, ?)");
     $ainesLis->execute(array($aines[$i], $yksikko[$i]));
 
     $ainesKysely2 = $TKyhteys->prepare("SELECT nimi, ID FROM aines WHERE nimi = ?");
     $ainesKysely2->execute(array($aines[$i]));
-    $ainekset = $ainesKysely2->fetchAll;
+    $ainekset2 = $ainesKysely2->fetchAll;
 
     $lisaaRuoanAinekset = $TKyhteys->prepare("INSERT INTO ruoanainekset (RuokaID, AinesID, maara) VALUES (?, ?, ?)");
-    $lisaaRuoanAinekset->execute(array($RuokaID, $ainekset["ID"], $maara[$i]));
+    $lisaaRuoanAinekset->execute(array($RuokaID, $ainekset2["ID"], $maara[$i]));
 }
 
 
