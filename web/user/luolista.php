@@ -19,48 +19,29 @@ if ($_SESSION["kirjautunut"] != 1) {
         <div id="raami">
             <div id="sisus">
                 <h1>Ostoslista</h1>
+
+		<table>
                 <?php
                 include("../TKyhteys.php");
 
                 // Valitaan ostoskorin rivit, jotka kuuluvat käyttäjälle
                 $kori = $TKyhteys->prepare("SELECT * FROM ostoskori WHERE kayttaja = ?");
-                $kori->execute(array($_SESSION["kaytID"]));
-
-                // Luodaan lista, johon ainekset tallennetaan
-                $ainekset = [];
-
+		$kori->execute(array($_SESSION["kaytID"]));
                 // Valitaan aputaulusta rivit, jotka vastaavat valittuja ruokia
-                while ($rivi = $kori->fetch()) {
-                    $ruoka = $TKyhteys->prepare("SELECT nimi FROM ruoanainekset WHERE RuokaID = ?");
+		while ($rivi = $kori->fetch()) {
+                    $ruoka = $TKyhteys->prepare("SELECT * FROM ruoanainekset WHERE RuokaID = ?");
                     $ruoka->execute(array($rivi["RuokaID"]));
-                    // Lisätään listaan rivit, jotka löydettiin
                     while ($riviR = $ruoka->fetch()) {
-                        $aines = $TKyhteys->prepare("SELECT nimi FROM aines WHERE ID = ?");
-                        $aines->execute(array($riviR["ID"]));
+                        $aines = $TKyhteys->prepare("SELECT * FROM aines WHERE ID = ?");
+                        $aines->execute(array($riviR["AinesID"]));
                         $ainesRivi = $aines->fetch();
-
-                        $uusiRivi = [$ainesRivi["nimi"], $riviR["maara"]];
-                        $ainekset[] = $uusiRivi[];
+			//tulostus
+                        echo "<tr><td>" . $ainesRivi["nimi"] . "</td><td>";
+			echo $riviR["maara"] * $rivi["maara"] . " " . $ainesRivi["yksikko"] . "<td></tr>";
                     }
-                }
-                // Järjestetään lista
-                array_multisort($ainekset);
-                // Käsitellään toistuvat tuotteet (yhdistetään ne)
-                $lopputulos = [];
-                for ($a = 0; $a <= count($ainekset); $a++) {
-                    $lopputulos[] = $a[];
-                }
-                
-                for ($i = 0; $i <= count($lopputulos); $i++) {
-                    if ($i % 2 != 0) {
-                        echo "<tr class=alt>";
-                    } else {
-                        echo "<tr>";
-                    }
-                    echo "<td>" . $ainekset[$i][0] . "</td>";
-                    echo "<td>" . $ainekset[$i][1] . "</td></tr>";
                 }
                 ?>
+		</table>
             </div>
         </div>
     </body>

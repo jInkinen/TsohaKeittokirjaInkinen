@@ -19,8 +19,8 @@ if ($teksti == "") {
 }
 
 // Lisätään tietokantaan
-include("../TKytheys.php");
-$lisaa = $TKyhteys->prepare("INSERT INTO kommentit (kayttaja, RuokaID, teksti) VALUES (?, ?)");
+include("../TKyhteys.php");
+$lisaa = $TKyhteys->prepare("INSERT INTO kommentit (kayttaja, RuokaID, teksti) VALUES (?, ?, ?)");
 $lisaa->execute(array($_SESSION["kaytID"], $ID, $teksti));
 
 header("Location: resepti.php?id=" . $ID);

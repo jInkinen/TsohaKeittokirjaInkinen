@@ -24,14 +24,14 @@ if ($_SESSION["kirjautunut"] != 1) {
         <div id="raami">
             <div id="sisus">
                 <h1>Lisää uusi resepti</h1>
-                <form id="lisaaForm" action="lisays.php" method="post">
+                <form id="lisaaForm" action="lisays.php" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
-                            <td>Reseptin nimi:</td>			
+                            <td>Reseptin nimi:</td>
                             <td><input name="nimi" type="text"></td>
                         </tr>
                         <tr>
-                            <td>Valmistusaika</td>			
+                            <td>Valmistusaika</td>
                             <td><input name="aika" type="number" min="0"> minuuttia</td>
                         </tr>
                         <tr>
@@ -59,7 +59,7 @@ if ($_SESSION["kirjautunut"] != 1) {
                             </td>
                         </tr>
                         <tr>
-                            <td>Valmistusohje:</td>			
+                            <td>Valmistusohje:</td>
                             <td><textarea name="ohje" rows=4 cols=50>Lisää ohje</TEXTAREA></td>
 			</tr>
                         <tr>

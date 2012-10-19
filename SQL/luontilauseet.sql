@@ -62,7 +62,7 @@ CREATE TABLE kayttaja
 	oikeudet int
 );
 
-CREATE TABLE ruokaTyypit
+CREATE TABLE ruokatyypit
 (
 	RuokaID bigint(20) NOT NULL,
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
@@ -72,8 +72,8 @@ CREATE TABLE ruokaTyypit
 
 CREATE TABLE kommentit
 (
-	ID bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	kayttaja bigint,
+	ID bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	kayttaja bigint(20),
 	RuokaID bigint(20),
 	teksti varchar(1000),
 	pvm TIMESTAMP NOT NULL,

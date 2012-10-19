@@ -33,7 +33,7 @@ if ($_POST["tyyppi"] == "r") {
 
     while ($ruoka = $kysely->fetch()) {
         $lisays = $TKyhteys->prepare("INSERT INTO ostoskori (kayttaja, RuokaID, maara) VALUES (?, ?, ?)");
-        $lisays->execute(array($kayttaja, $ruoka["ID"], 1));
+        $lisays->execute(array($kayttaja, $ruoka["RuokaID"], 1));
     }
 
     header("Location: ../ateria/ateria.php?id=" . $aID);

@@ -1,4 +1,4 @@
-<?php
+'<?php
 
 session_start();
 
@@ -7,12 +7,14 @@ if ($_SESSION["kirjautunut"] != 1) {
     exit();
 }
 
+$nimi = $_POST["nimi"];
+$kuvaus = $_POST["kuvaus"];
+
+
 if (!isset($nimi) || $nimi == "") {
     die("Aterian nimi puuttuu.");
 }
 
-$nimi = $_POST["nimi"];
-$kuvaus = $_POST["kuvaus"];
 
 include("../TKyhteys.php");
 

@@ -84,14 +84,6 @@ $kuvaus = $tulos["kuvaus"];
                     ?>
                 </table>
                 </p>
-                <p>
-                <table><b>Kommentit</b>
-                    <tr>
-                        <td>[Kommentoijan nimi]</td>
-                        <td>[Kommentti]</td>
-                    </tr>
-                </table>
-                </p>
             </div>
         </div>
     </body>

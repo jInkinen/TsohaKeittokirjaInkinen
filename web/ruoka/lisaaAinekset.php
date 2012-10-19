@@ -12,12 +12,12 @@ $yksikko = $_POST["yksikko"];
 $maara = $_POST["maara"];
 $rnimi = $_POST["ruokaID"];
 
-if (!isset($aines) || !isset($maara) || !isset($rnimi) || !isset($yksikko)) {
+if (!isset($rnimi)) {
     die("Vaadittuja arvoja ei lähetetty sivulle. Tulitko sivulle oikeaa reittiä?");
 }
 
 if (count($aines) < 0) {
-    die("Ainesten määrä ei voi olla negatiivinen.");
+    die("Ainesten määrässä virhe");
 }
 
 include("../TKyhteys.php");
