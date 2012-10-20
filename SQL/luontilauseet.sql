@@ -28,7 +28,6 @@ CREATE TABLE ruoanainekset
 	RuokaID bigint(20),
 	AinesID bigint(20),
 	maara double,
-	yksikko tinyint,
 	FOREIGN KEY (RuokaID) REFERENCES ruoka(ID),
 	FOREIGN KEY (AinesID) REFERENCES aines(ID)
 );

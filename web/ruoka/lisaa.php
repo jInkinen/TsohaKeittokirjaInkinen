@@ -90,7 +90,8 @@ if (!isset($_POST["maara"])) {
 			</tr>
                         <tr>
                             <td>
-                                Ainekset:
+                                Ainekset:<br>
+                                (Nimi, määrä, yksikkö)
                             </td>
                             <td>
                                 <button type="button" onclick="lisaaUusiAines(this)">Uusi aines</button><br>

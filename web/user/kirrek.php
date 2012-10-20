@@ -25,8 +25,8 @@ if ($nimi == "" || $ss == "") {
     die("Virhe: Salasana tai käyttäjänimi on tyhjä.");
 }
 
-$kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE nimi='" . $nimi . "'");
-$kysely->execute();
+$kysely = $TKyhteys->prepare("SELECT * FROM kayttaja WHERE nimi = ?");
+$kysely->execute(array($nimi));
 
 $tulos = $kysely->fetchAll();
 $maara = count($tulos);

@@ -80,8 +80,8 @@ for ($i = 0; $i < count($aines); $i++) {
 
     //Etsitään onko aines jo tietokannassa.
     //Jos on, niin lisätään vain ruoanainekset tauluun viite
-    $ainesKysely = $TKyhteys->prepare("SELECT nimi, ID FROM aines WHERE nimi = ?");
-    $ainesKysely->execute(array($aines[$i]));
+    $ainesKysely = $TKyhteys->prepare("SELECT nimi, ID FROM aines WHERE nimi = ? AND yksikko = ?");
+    $ainesKysely->execute(array($aines[$i], $yksikko[$i]));
     $ainekset = $ainesKysely->fetchAll();
 
     if (count($ainekset) > 0) {
