@@ -86,7 +86,7 @@ for ($i = 0; $i < count($aines); $i++) {
 
     if (count($ainekset) > 0) {
         $lisaaRuoanAinekset = $TKyhteys->prepare("INSERT INTO ruoanainekset (RuokaID, AinesID, maara) VALUES (?, ?, ?)");
-        $lisaaRuoanAinekset->execute(array($RuokaID, $ainekset[0]["ID"], $maara[$i]));
+        $lisaaRuoanAinekset->execute(array($RuokaID, $ainekset[0]["ID"], number_format($maara[$i], 2, ".", "")));
         continue;
     }
 

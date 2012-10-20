@@ -1,4 +1,5 @@
 <?php
+
 // Varmistetaan että käyttäjä on kirjautunut
 session_start();
 if ($_SESSION["kirjautunut"] != 1) {

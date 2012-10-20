@@ -36,10 +36,6 @@ if ($_SESSION["kirjautunut"] != 1) {
                 <p>Tämä on käyttäjäprofiilisi. Täältä voit poistaa profiilin tai kirjautua ulos.</p>
                 <form action="kirjaaulos.php">
                     <input id="kirjauduulos" type="submit" value="Kirjaudu ulos">
-                </form><br><br>
-                <form>
-                    [TODO]
-                    <input id="poistak" type="button" value="Poista käyttäjätunnus">
                 </form>
             </div>
         </div>

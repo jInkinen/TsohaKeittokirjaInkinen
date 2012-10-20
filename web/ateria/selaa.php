@@ -46,6 +46,5 @@ if (!isset($_GET["sort2"])) {
                 </table>
             </div>
         </div>
-
     </body>
 </html>

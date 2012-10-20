@@ -1,8 +1,0 @@
----Korjattava:
-hakutulokseen ruoan nimi tyyppi/laji kohtaan
-Salli desimaalipilkut aineksen määrässä
-
-Aines taulun uusinta???
-SQL: rakenteeseen taulut jokaista tyyppiä kohden hinnalle ja ravinnolle (kg, l, kpl)
-SQL: ruoanaineksiin yksikko tallennettavaksi
-Muuta ainesten lisäyksen yksikkö pudotusvalikosta valittavaksi?

@@ -30,8 +30,8 @@ $insert->execute(array($nimi, $kuvaus));
 
 //Selvitetään lisätyn aterian ID tietokannasta ja ohjataan
 //käyttäjä luodun aterian sivulle.
-$select = $TKyhteys->prepare("SELECT ID FROM ateria WHERE nimi='" . $nimi . "'");
-$select->execute();
+$select = $TKyhteys->prepare("SELECT ID FROM ateria WHERE nimi = ?");
+$select->execute(array($nimi));
 $ID = $select->fetch();
 
 header("Location: ateria.php?id=" . $ID["ID"]);

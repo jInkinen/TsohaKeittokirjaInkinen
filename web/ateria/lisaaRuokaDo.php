@@ -20,7 +20,7 @@ if ($rID < 0) {
 
 include("../TKyhteys.php");
 
-$insert = $TKyhteys->prepare("INSERT INTO aterianruoat (AteriaID, RuokaID) VALUES (" . $aID . ", " . $rID . ")");
-$insert->execute();
+$insert = $TKyhteys->prepare("INSERT INTO aterianruoat AteriaID, RuokaID VALUES ?, ?");
+$insert->execute(array($aID, $rID));
 header("Location: ateria.php?id=" . $aID);
 ?>

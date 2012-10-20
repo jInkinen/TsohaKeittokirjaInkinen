@@ -7,18 +7,18 @@
     <body>
         <?php
         include("valikko.php");
-	?>
+        ?>
         <div id="raami">
             <div id="sisus">
-		<?php
-        	if (!isset($_GET["hakusana"])) {
-            		die("HAKU: Hakusanaa ei asetettu");
-        	}
-        	$hakusana = $_GET["hakusana"];
-		if ($hakusana == "") {
-			$hakusana = "%";
-        	}
-		?>
+                <?php
+                if (!isset($_GET["hakusana"])) {
+                    die("HAKU: Hakusanaa ei asetettu");
+                }
+                $hakusana = $_GET["hakusana"];
+                if ($hakusana == "") {
+                    $hakusana = "%";
+                }
+                ?>
                 <h1>Hakutulokset - [<?php echo $hakusana ?>]</h1></br>
                 <h3>Reseptit:</h3><br>
                 <table>
@@ -50,13 +50,13 @@
                 <table>
                     <?php
                     $TKtaulu = "ruokatyypit";
-		    $sort = "tyyppi";
+                    $sort = "tyyppi";
                     teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
-		    if ($arvo != "%") {
-		    	$sort = "laji";
-                    	teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
-                   }
-		    ?>
+                    if ($arvo != "%") {
+                        $sort = "laji";
+                        teeTaulukko($TKtaulu, $sort, $sort2, $arvo, $TKyhteys);
+                    }
+                    ?>
                 </table>
             </div>
         </div>

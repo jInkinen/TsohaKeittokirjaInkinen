@@ -26,23 +26,23 @@ if (!isset($_POST["maara"])) {
         <link rel="stylesheet" href="../tyyli/tyylit.css" />
     </head>
     <script language="javascript">
-	function testi() {
-		alert("testi");
-	}
+        function testi() {
+            alert("testi");
+        }
         function lisaaUusiAines(lomake) {
             lisaaUusiKentta(lomake, "aines[]");
             lisaaUusiKentta(lomake, "maara[]");
             lisaaUusiKentta(lomake, "yksikko[]");
         }
         function lisaaUusiKentta(lomake, nimi) {
-		var kentta = document.createElement("input");
+            var kentta = document.createElement("input");
 
-		kentta.setAttribute("type", "text");
-		kentta.setAttribute("name", nimi);
-		kentta.setAttribute("value", "");
-		kentta.setAttribute("size", "15");
+            kentta.setAttribute("type", "text");
+            kentta.setAttribute("name", nimi);
+            kentta.setAttribute("value", "");
+            kentta.setAttribute("size", "15");
 
-		lomake.parentNode.appendChild(kentta);
+            lomake.parentNode.appendChild(kentta);
         }
     </script>
     <body>
@@ -100,8 +100,8 @@ if (!isset($_POST["maara"])) {
                                 <td>Kuva:</td>
                                 <td><input name="kuva" accept="image/jpeg" type="file"></td>
                         </tr>
-                </table><br>
-                <input id="lisaa" type="submit" value="Lähetä">
+                    </table><br>
+                    <input id="lisaa" type="submit" value="Lähetä">
                 </form>
             </div>
         </div>

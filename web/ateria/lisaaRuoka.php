@@ -44,9 +44,7 @@ if (!isset($_POST["ID"])) {
                     </select>
                     <input type="submit" value="Lisää">
                 </form>
-
-
-            </div></div>
+            </div>
+        </div>
     </body>
 </html>
-

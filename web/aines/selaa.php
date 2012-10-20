@@ -41,13 +41,12 @@ if (!isset($_GET["sort2"])) {
                         <th>RAVINTO <a href="selaa.php?sort=ravinto&sort2=ASC">&#x25B2</a> <a href="selaa.php?sort=ravinto&sort2=DESC">&#x25BC</a></th>
                     </tr>
                     <?php
-		    include("../TKyhteys.php"); 
+                    include("../TKyhteys.php");
                     include("../taulukko.php");
-                   teeTaulukko("aines", $sort, $sort2, "%", $TKyhteys);
+                    teeTaulukko("aines", $sort, $sort2, "%", $TKyhteys);
                     ?>
                 </table>
             </div>
         </div>
-
     </body>
 </html>

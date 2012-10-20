@@ -15,15 +15,14 @@ function teeTaulukko($taulu, $sort, $sort2, $arvo, $TKyhteys) {
         $arvo = "%";
     }
     if ($taulu == "kayttaja") {
-	die("Luvaton taulun nimi.");
+        die("Luvaton taulun nimi.");
     }
 
 //Valmistellaan kysely ja suoritetaan se
-
 //    $kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu . " WHERE ? LIKE ? ORDER BY ? ?");
 //    $kysely->execute(array($sort, $arvo, $sort, $sort2));
 
-    $kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu ." WHERE " . $sort . " LIKE '%" . $arvo . "%' ORDER BY ". $sort ." " . $sort2);
+    $kysely = $TKyhteys->prepare("SELECT * FROM " . $taulu . " WHERE " . $sort . " LIKE '%" . $arvo . "%' ORDER BY " . $sort . " " . $sort2);
     $kysely->execute();
 
 //Kirjoitetaan tulokset sivulle
@@ -51,8 +50,8 @@ function teeTaulukko($taulu, $sort, $sort2, $arvo, $TKyhteys) {
             echo "<td>" . $tulos["ID"] . "</td>";
             echo "<td><a href=/tsoha/ateria/ateria.php?id=" . $tulos["ID"] . ">" . $tulos["nimi"] . "</a></td></tr>";
         } else if ($taulu == "ruokatyypit") {
-            echo "<td><a href=/tsoha/ruoka/resepti.php?id=" . $tulos["RuokaID"] . ">". $tulos["tyyppi"] . " / ". $tulos["laji"] ."</a></td>";
-	} else {
+            echo "<td><a href=/tsoha/ruoka/resepti.php?id=" . $tulos["RuokaID"] . ">" . $tulos["tyyppi"] . " / " . $tulos["laji"] . "</a></td>";
+        } else {
             echo "virhe";
             die("taulukko.php: Tuntematon taulu annettu. Palaa edelliselle sivulle ja kokeile uudestaan.");
         }

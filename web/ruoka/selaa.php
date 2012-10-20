@@ -39,7 +39,7 @@
                     }
                     // Tulostetaan taulukko
                     include ("../taulukko.php");
-       		    include ("../TKyhteys.php");
+                    include ("../TKyhteys.php");
                     teeTaulukko("ruoka", $sort, $sort2, "%", $TKyhteys);
                     ?>
                 </table>

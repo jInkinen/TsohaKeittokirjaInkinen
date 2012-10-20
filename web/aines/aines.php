@@ -3,7 +3,9 @@
     Created on : 13.9.2012, 17:44:36
     Author     : juhainki
 -->
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!@page contentType="text/html" pageEncoding="UTF-8">
 <!DOCTYPE html>
 <html>
@@ -17,7 +19,7 @@
         <div id="raami">
             <div id="sisus">
                 <?php
-		$ID = $_GET["id"];
+                $ID = $_GET["id"];
 
                 include("../TKyhteys.php");
                 $kysely = $TKyhteys->prepare("SELECT * FROM aines WHERE ID = ?");

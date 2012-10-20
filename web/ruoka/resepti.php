@@ -31,7 +31,7 @@ $ohje = $tulos["ohje"];
         <div id="raami">
             <div id="sisus">
                 <h1><?php echo $nimi ?></h1>
-		<?php echo "<img src=kuva.php?id=" . $ID  ." alt='EI KUVAA'>"; ?>
+                <?php echo "<img src=kuva.php?id=" . $ID . " alt='EI KUVAA'>"; ?>
                 <p><b>Valmistusaika:<?php echo $aika ?></b>
                     <?php
                     if ($_SESSION["kirjautunut"] == 1) {
@@ -65,37 +65,37 @@ $ohje = $tulos["ohje"];
                             echo "<tr>";
                         }
                         echo "<td><a href=../aines/aines.php?id=" . $aines["AinesID"] . ">" . $animi["nimi"] . "</a></td>";
-                        echo "<td>" . $aines["maara"] . " " . $animi["yksikko"].  "</td></tr>";
+                        echo "<td>" . $aines["maara"] . " " . $animi["yksikko"] . "</td></tr>";
                     }
                     ?>
                 </table>
                 </p>
                 <p><b>Valmistusohje:</b><br><?php echo $ohje ?></p>
                 <table><b>Kommentit:</b>
-		<?php
-		$kommentit = $TKyhteys->prepare("SELECT * FROM kommentit WHERE RuokaID = ?");
-		$kommentit->execute(array($ID));
-
-		while ($kommentti = $kommentit->fetch()) {
-			$kayttaja = $TKyhteys->prepare("SELECT nimi, ID FROM kayttaja WHERE ID = ?");
-			$kayttaja->execute(array($kommentti["kayttaja"]));
-			$k = $kayttaja->fetch();
-			echo "<tr><td>";
-			echo $kommentti["teksti"] . " - <i><b>" . $k["nimi"]  . "</b></i> (" . $kommentti["pvm"]  . ")";
-			echo "</td></tr>";
-		}
-		?>
-                </table>
                     <?php
-                    if ($_SESSION["kirjautunut"] == 1) {
-                        echo "<br><b>Lisää uusi kommentti:</b><br><form id=lisaaForm action='lisaakommentti.php' method=post>";
-                        //Säilötään reseptin ID lähetettäväksi
-                        echo "<input name=ID type=hidden value=" . $ID . ">";
-                        echo "<textarea name=teksti rows=5 cols=50></TEXTAREA>";
-                        echo "<br><input type=submit value='Lähetä kommentti'>";
-                        echo "</form>";
+                    $kommentit = $TKyhteys->prepare("SELECT * FROM kommentit WHERE RuokaID = ?");
+                    $kommentit->execute(array($ID));
+
+                    while ($kommentti = $kommentit->fetch()) {
+                        $kayttaja = $TKyhteys->prepare("SELECT nimi, ID FROM kayttaja WHERE ID = ?");
+                        $kayttaja->execute(array($kommentti["kayttaja"]));
+                        $k = $kayttaja->fetch();
+                        echo "<tr><td>";
+                        echo $kommentti["teksti"] . " - <i><b>" . $k["nimi"] . "</b></i> (" . $kommentti["pvm"] . ")";
+                        echo "</td></tr>";
                     }
-		?>
+                    ?>
+                </table>
+                <?php
+                if ($_SESSION["kirjautunut"] == 1) {
+                    echo "<br><b>Lisää uusi kommentti:</b><br><form id=lisaaForm action='lisaakommentti.php' method=post>";
+                    //Säilötään reseptin ID lähetettäväksi
+                    echo "<input name=ID type=hidden value=" . $ID . ">";
+                    echo "<textarea name=teksti rows=5 cols=50></TEXTAREA>";
+                    echo "<br><input type=submit value='Lähetä kommentti'>";
+                    echo "</form>";
+                }
+                ?>
             </div>
         </div>
     </body>

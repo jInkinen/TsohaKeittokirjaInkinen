@@ -45,27 +45,27 @@ $kuvaus = $tulos["kuvaus"];
                     <tr>
                         <th>Aterian osat:</th>
                         <th>
-				<?php
-				if ($_SESSION["kirjautunut"] == 1) {
-				echo "<form action=lisaaRuoka.php method=post>";
-                        	echo "<input type=hidden name='ID' value=" . $ID . ">";
-                        	echo "<input type=submit value='Lisää uusi ruoka'>";
-                	        echo "</form>";
-				echo "<form action=../user/lisaakoriin.php method=post>";
-				//Kerrotaan piilossa että kyseessä on ateria ja sen ID
-                        	echo "<input type=hidden name='ID' value=" . $ID . ">";
-				echo "<input type=hidden name='tyyppi' value=a>";
-                        	echo "<input type=submit value='Lisää koriin'>";
-				echo "</form>";
-				}
-				?>
-			</th>
+                            <?php
+                            if ($_SESSION["kirjautunut"] == 1) {
+                                echo "<form action=lisaaRuoka.php method=post>";
+                                echo "<input type=hidden name='ID' value=" . $ID . ">";
+                                echo "<input type=submit value='Lisää uusi ruoka'>";
+                                echo "</form>";
+                                echo "<form action=../user/lisaakoriin.php method=post>";
+                                //Kerrotaan piilossa että kyseessä on ateria ja sen ID
+                                echo "<input type=hidden name='ID' value=" . $ID . ">";
+                                echo "<input type=hidden name='tyyppi' value=a>";
+                                echo "<input type=submit value='Lisää koriin'>";
+                                echo "</form>";
+                            }
+                            ?>
+                        </th>
                     </tr>
                     <?php
-                    $kysely = $TKyhteys->prepare("SELECT * FROM aterianruoat WHERE AteriaID = ?");
-                    $kysely->execute(array($ID));
+                    $kysely2 = $TKyhteys->prepare("SELECT * FROM aterianruoat WHERE AteriaID = ?");
+                    $kysely2->execute(array($ID));
                     //Käydään läpi saatu tulos
-                    while ($tulos = $kysely->fetch()) {
+                    while ($tulos = $kysely2->fetch()) {
                         //Käytetään kahta eri tyyliä taulukon luettavuuden vuoksi
                         $i++;
                         if ($i % 2 != 0) {
@@ -75,9 +75,9 @@ $kuvaus = $tulos["kuvaus"];
                         }
 
                         //Selvitetään ruoka-taulusta ruoan nimi saadun ID:n perusteella
-                        $kysely2 = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE ID='" . $tulos["RuokaID"] . "'");
-                        $kysely2->execute();
-                        $ruoanNimi = $kysely2->fetch();
+                        $kysely3 = $TKyhteys->prepare("SELECT nimi FROM ruoka WHERE ID='" . $tulos["RuokaID"] . "'");
+                        $kysely3->execute();
+                        $ruoanNimi = $kysely3->fetch();
                         //Syötetään taulukkoon haluttu rivi
                         echo "<td><a href=../ruoka/resepti.php?id=" . $tulos["RuokaID"] . ">" . $ruoanNimi[0] . "</a></td>";
                     }
